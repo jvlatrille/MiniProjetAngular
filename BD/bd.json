@@ -1,0 +1,63 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "titre": "The Legend of Zelda: Breath of the Wild",
+      "plateforme": "Switch",
+      "genre": "Aventure",
+      "developpeur": "Nintendo",
+      "dateDeSortie": "2017-03-03",
+      "stock": 5
+    },
+    {
+      "id": 2,
+      "titre": "Super Mario Odyssey",
+      "plateforme": "Switch",
+      "genre": "Plateforme",
+      "developpeur": "Nintendo",
+      "dateDeSortie": "2017-10-27",
+      "stock": 3
+    },
+    {
+      "id": 3,
+      "titre": "God of War",
+      "plateforme": "PS4",
+      "genre": "Action",
+      "developpeur": "Santa Monica Studio",
+      "dateDeSortie": "2018-04-20",
+      "stock": 10
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "customerName": "Alice",
+      "customerEmail": "alice@example.com",
+      "customerPhone": "0612345678",
+      "gameTitle": "God of War",
+      "platform": "PS4",
+      "reservationDate": "2025-03-20",
+      "status": "Confirmée"
+    },
+    {
+      "id": 2,
+      "customerName": "Bob",
+      "customerEmail": "bob@example.com",
+      "customerPhone": "0687654321",
+      "gameTitle": "Super Mario Odyssey",
+      "platform": "Switch",
+      "reservationDate": "2025-04-15",
+      "status": "En attente"
+    },
+    {
+      "id": 3,
+      "customerName": "Claire",
+      "customerEmail": "claire@example.com",
+      "customerPhone": "0698765432",
+      "gameTitle": "The Legend of Zelda: Breath of the Wild",
+      "platform": "Switch",
+      "reservationDate": "2025-05-10",
+      "status": "Confirmée"
+    }
+  ]
+}
