@@ -1,65 +1,305 @@
 {
   "jeu": [
     {
-      "id": 1,
+      "id": "1",
       "titre": "The Legend of Zelda: Breath of the Wild",
       "plateforme": "Switch",
       "genre": "Aventure",
       "developpeur": "Nintendo",
       "dateDeSortie": "2017-03-03",
       "stock": 5,
-      "imageUrl" : "https://m.media-amazon.com/images/I/91jvZUxquKL._AC_UF1000,1000_QL80_.jpg"
+      "imageUrl": "https://m.media-amazon.com/images/I/91jvZUxquKL._AC_UF1000,1000_QL80_.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "titre": "Super Mario Odyssey",
       "plateforme": "Switch",
       "genre": "Plateforme",
       "developpeur": "Nintendo",
       "dateDeSortie": "2017-10-27",
       "stock": 3,
-      "imageUrl" : "https://m.media-amazon.com/images/I/91SF0Tzmv4L.jpg"
+      "imageUrl": "https://m.media-amazon.com/images/I/91SF0Tzmv4L.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "titre": "God of War",
       "plateforme": "PS4",
       "genre": "Action",
       "developpeur": "Santa Monica Studio",
       "dateDeSortie": "2018-04-20",
       "stock": 10,
-      "imageUrl" : "https://m.media-amazon.com/images/I/613lyxBIXoL._AC_UF1000,1000_QL80_.jpg"
+      "imageUrl": "https://m.media-amazon.com/images/I/613lyxBIXoL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "4",
+      "titre": "Horizon Forbidden West",
+      "plateforme": "PS5",
+      "genre": "Action-RPG",
+      "developpeur": "Guerrilla Games",
+      "dateDeSortie": "2022-02-18",
+      "stock": 8,
+      "imageUrl": "https://m.media-amazon.com/images/I/81MKgl8cZEL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "5",
+      "titre": "Halo Infinite",
+      "plateforme": "Xbox Series X",
+      "genre": "FPS",
+      "developpeur": "343 Industries",
+      "dateDeSortie": "2021-12-08",
+      "stock": 4,
+      "imageUrl": "https://m.media-amazon.com/images/I/81nWynmiDPL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": "6",
+      "titre": "Red Dead Redemption 2",
+      "plateforme": "PS4",
+      "genre": "Action-aventure",
+      "developpeur": "Rockstar Games",
+      "dateDeSortie": "2018-10-26",
+      "stock": 6,
+      "imageUrl": "https://m.media-amazon.com/images/I/81dKP+iFloL.jpg"
+    },
+    {
+      "id": "7",
+      "titre": "Final Fantasy VII Remake",
+      "plateforme": "PS4",
+      "genre": "RPG",
+      "developpeur": "Square Enix",
+      "dateDeSortie": "2020-04-10",
+      "stock": "7",
+      "imageUrl": "https://m.media-amazon.com/images/I/61USGE74bxL.jpg"
+    },
+    {
+      "id": "8",
+      "titre": "Minecraft",
+      "plateforme": "PC",
+      "genre": "Sandbox",
+      "developpeur": "Mojang",
+      "dateDeSortie": "2011-11-18",
+      "stock": 20,
+      "imageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202407/0401/670c294ded3baf4fa11068db2ec6758c63f7daeb266a35a1.png"
+    },
+    {
+      "id": "9",
+      "titre": "Fortnite",
+      "plateforme": "PC",
+      "genre": "Battle Royale",
+      "developpeur": "Epic Games",
+      "dateDeSortie": "2017-07-25",
+      "stock": 15,
+      "imageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202502/1417/aae4af6a4b9105f64b31bfc176f3e492f8692b204b508865.png"
+    },
+    {
+      "id": "10",
+      "titre": "Cyberpunk 2077",
+      "plateforme": "PC",
+      "genre": "RPG",
+      "developpeur": "CD Projekt Red",
+      "dateDeSortie": "2020-12-10",
+      "stock": 9,
+      "imageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202008/0416/6Bo40lnWU0BhgrOUm7Cb6by3.png"
+    },
+    {
+      "id": "11",
+      "titre": "The Witcher 3: Wild Hunt",
+      "plateforme": "PC",
+      "genre": "RPG",
+      "developpeur": "CD Projekt Red",
+      "dateDeSortie": "2015-05-18",
+      "stock": 12,
+      "imageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/kh4MUIuMmHlktOHar3lVl6rY.png"
+    },
+    {
+      "id": "12",
+      "titre": "Animal Crossing: New Horizons",
+      "plateforme": "Switch",
+      "genre": "Simulation",
+      "developpeur": "Nintendo",
+      "dateDeSortie": "2020-03-20",
+      "stock": 8,
+      "imageUrl": "https://m.media-amazon.com/images/I/81s8etnYPrL.jpg"
+    },
+    {
+      "id": "13",
+      "titre": "Assassin's Creed Valhalla",
+      "plateforme": "PS5",
+      "genre": "Action-RPG",
+      "developpeur": "Ubisoft",
+      "dateDeSortie": "2020-11-10",
+      "stock": 5,
+      "imageUrl": "https://m.media-amazon.com/images/I/81qtLu-WE0L.jpg"
+    },
+    {
+      "id": "14",
+      "titre": "Resident Evil Village",
+      "plateforme": "PS5",
+      "genre": "Survival horror",
+      "developpeur": "Capcom",
+      "dateDeSortie": "2021-05-07",
+      "stock": 6,
+      "imageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202101/0812/FkzwjnJknkrFlozkTdeQBMub.png"
+    },
+    {
+      "id": "15",
+      "titre": "FIFA 23",
+      "plateforme": "PS5",
+      "genre": "Sports",
+      "developpeur": "EA Sports",
+      "dateDeSortie": "2022-09-30",
+      "stock": 10,
+      "imageUrl": "https://m.media-amazon.com/images/I/71csLBQPRuL._AC_UF1000,1000_QL80_.jpg"
     }
   ],
   "reservations": [
     {
-      "id": 1,
-      "customerName": "Alice",
-      "customerEmail": "alice@example.com",
-      "customerPhone": "0612345678",
-      "gameTitle": "God of War",
-      "platform": "PS4",
-      "reservationDate": "2025-03-20",
+      "id": "1",
+      "nomClient": "Alice",
+      "emailClient": "alice@example.com",
+      "telClient": "0612345678",
+      "jeuClient": "The Legend of Zelda: Breath of the Wild",
+      "plateformeClient": "Switch",
+      "reservationDate": "2025-05-10",
       "status": "Confirmée"
     },
     {
-      "id": 2,
-      "customerName": "Bob",
-      "customerEmail": "bob@example.com",
-      "customerPhone": "0687654321",
-      "gameTitle": "Super Mario Odyssey",
-      "platform": "Switch",
+      "id": "2",
+      "nomClient": "Bob",
+      "emailClient": "bob@example.com",
+      "telClient": "0687654321",
+      "jeuClient": "Super Mario Odyssey",
+      "plateformeClient": "Switch",
       "reservationDate": "2025-04-15",
       "status": "En attente"
     },
     {
-      "id": 3,
-      "customerName": "Claire",
-      "customerEmail": "claire@example.com",
-      "customerPhone": "0698765432",
-      "gameTitle": "The Legend of Zelda: Breath of the Wild",
-      "platform": "Switch",
-      "reservationDate": "2025-05-10",
+      "id": "3",
+      "nomClient": "Claire",
+      "emailClient": "claire@example.com",
+      "telClient": "0698765432",
+      "jeuClient": "God of War",
+      "plateformeClient": "PS4",
+      "reservationDate": "2025-03-20",
+      "status": "Confirmée"
+    },
+    {
+      "id": "4",
+      "nomClient": "David",
+      "emailClient": "david@example.com",
+      "telClient": "0600000001",
+      "jeuClient": "Horizon Forbidden West",
+      "plateformeClient": "PS5",
+      "reservationDate": "2025-06-01",
+      "status": "Confirmée"
+    },
+    {
+      "id": "5",
+      "nomClient": "Emma",
+      "emailClient": "emma@example.com",
+      "telClient": "0600000002",
+      "jeuClient": "Halo Infinite",
+      "plateformeClient": "Xbox Series X",
+      "reservationDate": "2025-06-02",
+      "status": "En attente"
+    },
+    {
+      "id": "6",
+      "nomClient": "Liam",
+      "emailClient": "liam@example.com",
+      "telClient": "0600000003",
+      "jeuClient": "Red Dead Redemption 2",
+      "plateformeClient": "PS4",
+      "reservationDate": "2025-06-03",
+      "status": "Confirmée"
+    },
+    {
+      "id": "7",
+      "nomClient": "Olivia",
+      "emailClient": "olivia@example.com",
+      "telClient": "0600000004",
+      "jeuClient": "Final Fantasy VII Remake",
+      "plateformeClient": "PS4",
+      "reservationDate": "2025-06-04",
+      "status": "Confirmée"
+    },
+    {
+      "id": "8",
+      "nomClient": "Noah",
+      "emailClient": "noah@example.com",
+      "telClient": "0600000005",
+      "jeuClient": "Minecraft",
+      "plateformeClient": "PC",
+      "reservationDate": "2025-06-05",
+      "status": "En attente"
+    },
+    {
+      "id": "9",
+      "nomClient": "Emma",
+      "emailClient": "emma2@example.com",
+      "telClient": "0600000006",
+      "jeuClient": "Fortnite",
+      "plateformeClient": "PC",
+      "reservationDate": "2025-06-06",
+      "status": "Confirmée"
+    },
+    {
+      "id": "10",
+      "nomClient": "Mia",
+      "emailClient": "mia@example.com",
+      "telClient": "0600000007",
+      "jeuClient": "Cyberpunk 2077",
+      "plateformeClient": "PC",
+      "reservationDate": "2025-06-07",
+      "status": "Confirmée"
+    },
+    {
+      "id": "11",
+      "nomClient": "Lucas",
+      "emailClient": "lucas@example.com",
+      "telClient": "0600000008",
+      "jeuClient": "The Witcher 3: Wild Hunt",
+      "plateformeClient": "PC",
+      "reservationDate": "2025-06-08",
+      "status": "En attente"
+    },
+    {
+      "id": "12",
+      "nomClient": "Chloe",
+      "emailClient": "chloe@example.com",
+      "telClient": "0600000009",
+      "jeuClient": "Animal Crossing: New Horizons",
+      "plateformeClient": "Switch",
+      "reservationDate": "2025-06-09",
+      "status": "Confirmée"
+    },
+    {
+      "id": "13",
+      "nomClient": "Elijah",
+      "emailClient": "elijah@example.com",
+      "telClient": "0600000010",
+      "jeuClient": "Assassin's Creed Valhalla",
+      "plateformeClient": "PS5",
+      "reservationDate": "2025-06-10",
+      "status": "Confirmée"
+    },
+    {
+      "id": "14",
+      "nomClient": "Sophie",
+      "emailClient": "sophie@example.com",
+      "telClient": "0600000011",
+      "jeuClient": "Resident Evil Village",
+      "plateformeClient": "PS5",
+      "reservationDate": "2025-06-11",
+      "status": "En attente"
+    },
+    {
+      "id": "15",
+      "nomClient": "James",
+      "emailClient": "james@example.com",
+      "telClient": "0600000012",
+      "jeuClient": "FIFA 23",
+      "plateformeClient": "PS5",
+      "reservationDate": "2025-06-12",
       "status": "Confirmée"
     }
   ]
