@@ -1,6 +1,7 @@
 <div class="container my-4">
   <h2 class="mb-4">Nouvelle Réservation</h2>
   <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <!-- Nom du client -->
     <div class="mb-3">
       <label for="customerName" class="form-label">Nom du client :</label>
       <input
@@ -9,7 +10,26 @@
         formControlName="customerName"
         class="form-control"
       />
+      <div
+        *ngIf="
+          reservationForm.get('customerName')?.touched &&
+          reservationForm.get('customerName')?.invalid
+        "
+        class="text-danger"
+      >
+        <small
+          *ngIf="reservationForm.get('customerName')?.errors?.['required']"
+        >
+          Ce champ est requis.
+        </small>
+        <small
+          *ngIf="reservationForm.get('customerName')?.errors?.['minlength']"
+        >
+          Minimum 3 caractères requis.
+        </small>
+      </div>
     </div>
+    <!-- Email -->
     <div class="mb-3">
       <label for="customerEmail" class="form-label">Email :</label>
       <input
@@ -18,7 +38,24 @@
         formControlName="customerEmail"
         class="form-control"
       />
+      <div
+        *ngIf="
+          reservationForm.get('customerEmail')?.touched &&
+          reservationForm.get('customerEmail')?.invalid
+        "
+        class="text-danger"
+      >
+        <small
+          *ngIf="reservationForm.get('customerEmail')?.errors?.['required']"
+        >
+          Ce champ est requis.
+        </small>
+        <small *ngIf="reservationForm.get('customerEmail')?.errors?.['email']">
+          Entrez une adresse email valide.
+        </small>
+      </div>
     </div>
+    <!-- Téléphone -->
     <div class="mb-3">
       <label for="customerPhone" class="form-label">Téléphone :</label>
       <input
@@ -27,7 +64,21 @@
         formControlName="customerPhone"
         class="form-control"
       />
+      <div
+        *ngIf="
+          reservationForm.get('customerPhone')?.touched &&
+          reservationForm.get('customerPhone')?.invalid
+        "
+        class="text-danger"
+      >
+        <small
+          *ngIf="reservationForm.get('customerPhone')?.errors?.['required']"
+        >
+          Ce champ est requis.
+        </small>
+      </div>
     </div>
+    <!-- Titre du jeu -->
     <div class="mb-3">
       <label for="gameTitle" class="form-label">Titre du jeu :</label>
       <input
@@ -36,7 +87,19 @@
         formControlName="gameTitle"
         class="form-control"
       />
+      <div
+        *ngIf="
+          reservationForm.get('gameTitle')?.touched &&
+          reservationForm.get('gameTitle')?.invalid
+        "
+        class="text-danger"
+      >
+        <small *ngIf="reservationForm.get('gameTitle')?.errors?.['required']">
+          Ce champ est requis.
+        </small>
+      </div>
     </div>
+    <!-- Plateforme -->
     <div class="mb-3">
       <label for="platform" class="form-label">Plateforme :</label>
       <input
@@ -45,7 +108,19 @@
         formControlName="platform"
         class="form-control"
       />
+      <div
+        *ngIf="
+          reservationForm.get('platform')?.touched &&
+          reservationForm.get('platform')?.invalid
+        "
+        class="text-danger"
+      >
+        <small *ngIf="reservationForm.get('platform')?.errors?.['required']">
+          Ce champ est requis.
+        </small>
+      </div>
     </div>
+    <!-- Date de réservation -->
     <div class="mb-3">
       <label for="reservationDate" class="form-label"
         >Date de réservation :</label
@@ -56,7 +131,21 @@
         formControlName="reservationDate"
         class="form-control"
       />
+      <div
+        *ngIf="
+          reservationForm.get('reservationDate')?.touched &&
+          reservationForm.get('reservationDate')?.invalid
+        "
+        class="text-danger"
+      >
+        <small
+          *ngIf="reservationForm.get('reservationDate')?.errors?.['required']"
+        >
+          Ce champ est requis.
+        </small>
+      </div>
     </div>
+    <!-- Statut -->
     <div class="mb-3">
       <label for="status" class="form-label">Statut :</label>
       <select id="status" formControlName="status" class="form-select">

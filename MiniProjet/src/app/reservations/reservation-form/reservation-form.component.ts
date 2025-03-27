@@ -25,7 +25,7 @@ export class ReservationFormComponent {
       gameTitle: ['', Validators.required],
       platform: ['', Validators.required],
       reservationDate: ['', Validators.required],
-      status: ['En attente', Validators.required], // Par défaut, "En attente"
+      status: ['En attente', Validators.required],
     });
   }
 
@@ -35,9 +35,10 @@ export class ReservationFormComponent {
     if (this.reservationForm.valid) {
       const reservation: Reservation = this.reservationForm.value;
       this.reservationsService.addReservation(reservation).subscribe(() => {
-        // Une fois l'ajout effectué, navigue vers la liste des réservations
         this.router.navigate(['/reservations']);
       });
+    } else {
+      console.log('Le formulaire est invalide :', this.reservationForm.value);
     }
   }
 }
