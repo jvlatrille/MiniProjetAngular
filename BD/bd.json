@@ -1,5 +1,5 @@
 {
-  "games": [
+  "jeu": [
     {
       "id": 1,
       "titre": "The Legend of Zelda: Breath of the Wild",
@@ -7,7 +7,8 @@
       "genre": "Aventure",
       "developpeur": "Nintendo",
       "dateDeSortie": "2017-03-03",
-      "stock": 5
+      "stock": 5,
+      "imageUrl" : "https://m.media-amazon.com/images/I/91jvZUxquKL._AC_UF1000,1000_QL80_.jpg"
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "genre": "Plateforme",
       "developpeur": "Nintendo",
       "dateDeSortie": "2017-10-27",
-      "stock": 3
+      "stock": 3,
+      "imageUrl" : "https://m.media-amazon.com/images/I/91SF0Tzmv4L.jpg"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "genre": "Action",
       "developpeur": "Santa Monica Studio",
       "dateDeSortie": "2018-04-20",
-      "stock": 10
+      "stock": 10,
+      "imageUrl" : "https://m.media-amazon.com/images/I/613lyxBIXoL._AC_UF1000,1000_QL80_.jpg"
     }
   ],
   "reservations": [
