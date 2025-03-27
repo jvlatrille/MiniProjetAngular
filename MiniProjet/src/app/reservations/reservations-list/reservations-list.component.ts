@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { ReservationsService } from '../../services/reservations.service';
 import { Reservation } from '../../models/reservation.model';
+import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-reservations-list',
@@ -12,28 +13,40 @@ import { Reservation } from '../../models/reservation.model';
 export class ReservationsListComponent {
   reservations: Reservation[] = [];
   editingReservation: Reservation | null = null;
+  filteredReservations: Reservation[] = [];
+  searchControl: FormControl = new FormControl('');
+  subscription: Subscription = new Subscription();
 
   constructor(
     private reservationsService: ReservationsService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadReservations();
+    this.subscription.add(
+      this.searchControl.valueChanges.subscribe(searchText => {
+        this.filteredReservations = this.reservations.filter(r =>
+          r.nomClient.toLowerCase().includes(searchText.toLowerCase()) ||
+          r.jeuClient.toLowerCase().includes(searchText.toLowerCase()) ||
+          r.status.toLowerCase().includes(searchText.toLowerCase())
+        );
+      })
+    );
   }
 
   loadReservations(): void {
-    this.reservationsService.getReservations().subscribe((data) => {
+    this.reservationsService.getReservations().subscribe(data => {
       this.reservations = data;
+      this.filteredReservations = data;
     });
   }
 
+  // Méthodes pour l'édition inline (voir le point précédent)
   startEditing(reservation: Reservation): void {
     if (reservation.status === 'Confirmée') {
       alert("Cette réservation est confirmée et ne peut pas être modifiée.");
       return;
     }
-    // On clone l'objet pour éviter de modifier directement la liste
     this.editingReservation = { ...reservation };
   }
 
@@ -46,7 +59,6 @@ export class ReservationsListComponent {
       this.reservationsService
         .updateReservation(this.editingReservation.id!, this.editingReservation)
         .subscribe(() => {
-          // Recharger la liste après la mise à jour
           this.loadReservations();
           this.editingReservation = null;
         });
