@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg" style="background-color: #000;">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">Bibliothèque de Jeux Vidéo</a>
+    <a class="navbar-brand fw-bold" routerLink="/" style="color: #FF5714;">
+      Bibliothèque de Jeux Vidéo
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -9,31 +11,20 @@
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      style="border-color: #FF5714;"
     >
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/jeux" routerLinkActive="active"
-            >Jeux Vidéo</a
-          >
+          <a class="nav-link" routerLink="/jeux" routerLinkActive="active" style="color: #FF5714;">Jeux Vidéo</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/reservations"
-            routerLinkActive="active"
-            >Réservations</a
-          >
+          <a class="nav-link" routerLink="/reservations" routerLinkActive="active" style="color: #FF5714;">Réservations</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/reservations/new"
-            routerLinkActive="active"
-            >Ajouter Réservation</a
-          >
+          <a class="nav-link" routerLink="/reservations/new" routerLinkActive="active" style="color: #FF5714;">Ajouter Réservation</a>
         </li>
       </ul>
     </div>
