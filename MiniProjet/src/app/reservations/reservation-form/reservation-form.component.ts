@@ -22,11 +22,11 @@ export class ReservationFormComponent {
     private route: ActivatedRoute
   ) {
     this.reservationForm = this.fb.group({
-      customerName: ['', [Validators.required, Validators.minLength(3)]],
-      customerEmail: ['', [Validators.required, Validators.email]],
-      customerPhone: ['', Validators.required],
-      gameTitle: ['', Validators.required],
-      platform: ['', Validators.required],
+      nomClient: ['', [Validators.required, Validators.minLength(3)]],
+      emailClient: ['', [Validators.required, Validators.email]],
+      telClient: ['', Validators.required],
+      jeuClient: ['', Validators.required],
+      plateformeClient: ['', Validators.required],
       reservationDate: ['', Validators.required],
       status: ['En attente', Validators.required],
     });
@@ -44,11 +44,11 @@ export class ReservationFormComponent {
             this.router.navigate(['/reservations']);
           } else {
             this.reservationForm.patchValue({
-              customerName: reservation.customerName,
-              customerEmail: reservation.customerEmail,
-              customerPhone: reservation.customerPhone,
-              gameTitle: reservation.gameTitle,
-              platform: reservation.platform,
+              nomClient: reservation.nomClient,
+              emailClient: reservation.emailClient,
+              telClient: reservation.telClient,
+              jeuClient: reservation.jeuClient,
+              plateformeClient: reservation.plateformeClient,
               reservationDate: reservation.reservationDate,
               status: reservation.status
             });

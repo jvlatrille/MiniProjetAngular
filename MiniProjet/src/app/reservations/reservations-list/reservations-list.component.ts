@@ -11,6 +11,7 @@ import { Reservation } from '../../models/reservation.model';
 })
 export class ReservationsListComponent {
   reservations: Reservation[] = [];
+  editingReservation: Reservation | null = null;
 
   constructor(
     private reservationsService: ReservationsService,
@@ -27,10 +28,31 @@ export class ReservationsListComponent {
     });
   }
 
-  editReservation(id: number): void {
-    this.router.navigate(['/reservations/edit', id]);
+  startEditing(reservation: Reservation): void {
+    if (reservation.status === 'Confirmée') {
+      alert("Cette réservation est confirmée et ne peut pas être modifiée.");
+      return;
+    }
+    // On clone l'objet pour éviter de modifier directement la liste
+    this.editingReservation = { ...reservation };
   }
-  
+
+  cancelEditing(): void {
+    this.editingReservation = null;
+  }
+
+  saveEditing(): void {
+    if (this.editingReservation) {
+      this.reservationsService
+        .updateReservation(this.editingReservation.id!, this.editingReservation)
+        .subscribe(() => {
+          // Recharger la liste après la mise à jour
+          this.loadReservations();
+          this.editingReservation = null;
+        });
+    }
+  }
+
   deleteReservation(id: number): void {
     if (confirm('Confirmez-vous la suppression de cette réservation ?')) {
       this.reservationsService.deleteReservation(id).subscribe(() => {

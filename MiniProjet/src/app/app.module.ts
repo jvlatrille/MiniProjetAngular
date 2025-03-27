@@ -7,7 +7,7 @@ import { JeuxListComponent } from './jeux/jeux-list/jeux-list.component';
 import { ReservationsListComponent } from './reservations/reservations-list/reservations-list.component';
 import { ReservationFormComponent } from './reservations/reservation-form/reservation-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
@@ -22,7 +22,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

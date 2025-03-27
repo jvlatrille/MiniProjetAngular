@@ -16,24 +16,57 @@
       </thead>
       <tbody>
         <tr *ngFor="let reservation of reservations">
-          <td>{{ reservation.customerName }}</td>
-          <td>{{ reservation.customerEmail }}</td>
-          <td>{{ reservation.customerPhone }}</td>
-          <td>{{ reservation.gameTitle }}</td>
-          <td>{{ reservation.platform }}</td>
-          <td>{{ reservation.reservationDate }}</td>
-          <td>{{ reservation.status }}</td>
-          <td>
-            <!-- Si le statut n'est pas "Confirmée", afficher Modifier et Supprimer -->
-            <ng-container *ngIf="reservation.status !== 'Confirmée'; else noActions">
-              <button class="btn btn-sm btn-danger" (click)="deleteReservation(reservation.id!)">Supprimer</button>
-              <button class="btn btn-sm btn-danger" (click)="reservation.id !== undefined && deleteReservation(reservation.id)">Supprimer</button>
-            </ng-container>
-            <!-- Sinon, afficher un message indiquant qu'aucune action n'est possible -->
-            <ng-template #noActions>
-              <span class="text-muted">Aucune action</span>
-            </ng-template>
-          </td>
+          <!-- Si la réservation est en cours d'édition, afficher des inputs -->
+          <ng-container *ngIf="editingReservation && editingReservation.id === reservation.id; else displayRow">
+            <td>
+              <input class="form-control" [(ngModel)]="editingReservation.nomClient" name="nomClient-{{reservation.id}}">
+            </td>
+            <td>
+              <input class="form-control" [(ngModel)]="editingReservation.emailClient" name="emailClient-{{reservation.id}}">
+            </td>
+            <td>
+              <input class="form-control" [(ngModel)]="editingReservation.telClient" name="telClient-{{reservation.id}}">
+            </td>
+            <td>
+              <input class="form-control" [(ngModel)]="editingReservation.jeuClient" name="jeuClient-{{reservation.id}}">
+            </td>
+            <td>
+              <input class="form-control" [(ngModel)]="editingReservation.plateformeClient" name="plateformeClient-{{reservation.id}}">
+            </td>
+            <td>
+              <input class="form-control" type="date" [(ngModel)]="editingReservation.reservationDate" name="reservationDate-{{reservation.id}}">
+            </td>
+            <td>
+              <select class="form-select" [(ngModel)]="editingReservation.status" name="status-{{reservation.id}}">
+                <option value="Confirmée">Confirmée</option>
+                <option value="En attente">En attente</option>
+                <option value="Annulée">Annulée</option>
+              </select>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-success me-2" (click)="saveEditing()">Enregistrer</button>
+              <button class="btn btn-sm btn-secondary" (click)="cancelEditing()">Annuler</button>
+            </td>
+          </ng-container>
+          <!-- Affichage normal -->
+          <ng-template #displayRow>
+            <td>{{ reservation.nomClient }}</td>
+            <td>{{ reservation.emailClient }}</td>
+            <td>{{ reservation.telClient }}</td>
+            <td>{{ reservation.jeuClient }}</td>
+            <td>{{ reservation.plateformeClient }}</td>
+            <td>{{ reservation.reservationDate }}</td>
+            <td>{{ reservation.status }}</td>
+            <td>
+              <ng-container *ngIf="reservation.status !== 'Confirmée'; else noActions">
+                <button class="btn btn-sm btn-primary me-2" (click)="startEditing(reservation)">Modifier</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteReservation(reservation.id!)">Supprimer</button>
+              </ng-container>
+              <ng-template #noActions>
+                <span class="text-muted">Aucune action</span>
+              </ng-template>
+            </td>
+          </ng-template>
         </tr>
       </tbody>
     </table>

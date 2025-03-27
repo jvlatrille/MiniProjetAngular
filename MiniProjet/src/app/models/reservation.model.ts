@@ -1,10 +1,10 @@
 export interface Reservation {
     id?: number;
-    customerName: string;
-    customerEmail: string;
-    customerPhone: string;
-    gameTitle: string;
-    platform: string;
+    nomClient: string;
+    emailClient: string;
+    telClient: string;
+    jeuClient: string;
+    plateformeClient: string;
     reservationDate: string;
     status: 'Confirmée' | 'En attente' | 'Annulée';
 }

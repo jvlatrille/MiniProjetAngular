@@ -3,27 +3,27 @@
   <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
     <!-- Nom du client -->
     <div class="mb-3">
-      <label for="customerName" class="form-label">Nom du client :</label>
+      <label for="nomClient" class="form-label">Nom du client :</label>
       <input
-        id="customerName"
+        id="nomClient"
         type="text"
-        formControlName="customerName"
+        formControlName="nomClient"
         class="form-control"
       />
       <div
         *ngIf="
-          reservationForm.get('customerName')?.touched &&
-          reservationForm.get('customerName')?.invalid
+          reservationForm.get('nomClient')?.touched &&
+          reservationForm.get('nomClient')?.invalid
         "
         class="text-danger"
       >
         <small
-          *ngIf="reservationForm.get('customerName')?.errors?.['required']"
+          *ngIf="reservationForm.get('nomClient')?.errors?.['required']"
         >
           Ce champ est requis.
         </small>
         <small
-          *ngIf="reservationForm.get('customerName')?.errors?.['minlength']"
+          *ngIf="reservationForm.get('nomClient')?.errors?.['minlength']"
         >
           Minimum 3 caractères requis.
         </small>
@@ -31,48 +31,48 @@
     </div>
     <!-- Email -->
     <div class="mb-3">
-      <label for="customerEmail" class="form-label">Email :</label>
+      <label for="emailClient" class="form-label">Email :</label>
       <input
-        id="customerEmail"
+        id="emailClient"
         type="email"
-        formControlName="customerEmail"
+        formControlName="emailClient"
         class="form-control"
       />
       <div
         *ngIf="
-          reservationForm.get('customerEmail')?.touched &&
-          reservationForm.get('customerEmail')?.invalid
+          reservationForm.get('emailClient')?.touched &&
+          reservationForm.get('emailClient')?.invalid
         "
         class="text-danger"
       >
         <small
-          *ngIf="reservationForm.get('customerEmail')?.errors?.['required']"
+          *ngIf="reservationForm.get('emailClient')?.errors?.['required']"
         >
           Ce champ est requis.
         </small>
-        <small *ngIf="reservationForm.get('customerEmail')?.errors?.['email']">
+        <small *ngIf="reservationForm.get('emailClient')?.errors?.['email']">
           Entrez une adresse email valide.
         </small>
       </div>
     </div>
     <!-- Téléphone -->
     <div class="mb-3">
-      <label for="customerPhone" class="form-label">Téléphone :</label>
+      <label for="telClient" class="form-label">Téléphone :</label>
       <input
-        id="customerPhone"
+        id="telClient"
         type="text"
-        formControlName="customerPhone"
+        formControlName="telClient"
         class="form-control"
       />
       <div
         *ngIf="
-          reservationForm.get('customerPhone')?.touched &&
-          reservationForm.get('customerPhone')?.invalid
+          reservationForm.get('telClient')?.touched &&
+          reservationForm.get('telClient')?.invalid
         "
         class="text-danger"
       >
         <small
-          *ngIf="reservationForm.get('customerPhone')?.errors?.['required']"
+          *ngIf="reservationForm.get('telClient')?.errors?.['required']"
         >
           Ce champ est requis.
         </small>
@@ -80,42 +80,42 @@
     </div>
     <!-- Titre du jeu -->
     <div class="mb-3">
-      <label for="gameTitle" class="form-label">Titre du jeu :</label>
+      <label for="jeuClient" class="form-label">Titre du jeu :</label>
       <input
-        id="gameTitle"
+        id="jeuClient"
         type="text"
-        formControlName="gameTitle"
+        formControlName="jeuClient"
         class="form-control"
       />
       <div
         *ngIf="
-          reservationForm.get('gameTitle')?.touched &&
-          reservationForm.get('gameTitle')?.invalid
+          reservationForm.get('jeuClient')?.touched &&
+          reservationForm.get('jeuClient')?.invalid
         "
         class="text-danger"
       >
-        <small *ngIf="reservationForm.get('gameTitle')?.errors?.['required']">
+        <small *ngIf="reservationForm.get('jeuClient')?.errors?.['required']">
           Ce champ est requis.
         </small>
       </div>
     </div>
     <!-- Plateforme -->
     <div class="mb-3">
-      <label for="platform" class="form-label">Plateforme :</label>
+      <label for="plateformeClient" class="form-label">Plateforme :</label>
       <input
-        id="platform"
+        id="plateformeClient"
         type="text"
-        formControlName="platform"
+        formControlName="plateformeClient"
         class="form-control"
       />
       <div
         *ngIf="
-          reservationForm.get('platform')?.touched &&
-          reservationForm.get('platform')?.invalid
+          reservationForm.get('plateformeClient')?.touched &&
+          reservationForm.get('plateformeClient')?.invalid
         "
         class="text-danger"
       >
-        <small *ngIf="reservationForm.get('platform')?.errors?.['required']">
+        <small *ngIf="reservationForm.get('plateformeClient')?.errors?.['required']">
           Ce champ est requis.
         </small>
       </div>
