@@ -6,4 +6,5 @@ export interface Jeu {
   developpeur: string;
   dateDeSortie: Date;
   stock: number;
+  imageUrl: string;
 }

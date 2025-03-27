@@ -1,1 +1,76 @@
-<p>reservation-form works!</p>
+<div class="container my-4">
+  <h2 class="mb-4">Nouvelle Réservation</h2>
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="customerName" class="form-label">Nom du client :</label>
+      <input
+        id="customerName"
+        type="text"
+        formControlName="customerName"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="customerEmail" class="form-label">Email :</label>
+      <input
+        id="customerEmail"
+        type="email"
+        formControlName="customerEmail"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="customerPhone" class="form-label">Téléphone :</label>
+      <input
+        id="customerPhone"
+        type="text"
+        formControlName="customerPhone"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="gameTitle" class="form-label">Titre du jeu :</label>
+      <input
+        id="gameTitle"
+        type="text"
+        formControlName="gameTitle"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="platform" class="form-label">Plateforme :</label>
+      <input
+        id="platform"
+        type="text"
+        formControlName="platform"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="reservationDate" class="form-label"
+        >Date de réservation :</label
+      >
+      <input
+        id="reservationDate"
+        type="date"
+        formControlName="reservationDate"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Statut :</label>
+      <select id="status" formControlName="status" class="form-select">
+        <option value="Confirmée">Confirmée</option>
+        <option value="En attente">En attente</option>
+        <option value="Annulée">Annulée</option>
+      </select>
+    </div>
+    <button
+      type="submit"
+      [disabled]="reservationForm.invalid"
+      class="btn btn-primary"
+    >
+      Enregistrer la réservation
+    </button>
+  </form>
+</div>

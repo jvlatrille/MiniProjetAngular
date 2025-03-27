@@ -1,1 +1,36 @@
-<p>jeux-list works!</p>
+<div class="container my-4">
+  <h2 class="mb-4">Liste des jeux vidéo</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Image</th>
+          <th>Titre</th>
+          <th>Plateforme</th>
+          <th>Genre</th>
+          <th>Développeur</th>
+          <th>Date de sortie</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jeu of jeux">
+          <td>
+            <img
+              [src]="jeu.imageUrl"
+              alt="{{ jeu.titre }}"
+              class="img-thumbnail"
+              style="width: 100px"
+            />
+          </td>
+          <td>{{ jeu.titre }}</td>
+          <td>{{ jeu.plateforme }}</td>
+          <td>{{ jeu.genre }}</td>
+          <td>{{ jeu.developpeur }}</td>
+          <td>{{ jeu.dateDeSortie | date : "yyyy-MM-dd" }}</td>
+          <td>{{ jeu.stock }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
