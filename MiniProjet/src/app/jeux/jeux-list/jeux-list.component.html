@@ -8,7 +8,6 @@
       <div class="col-md-4 mb-4" *ngFor="let jeu of filteredJeux">
         <a [routerLink]="['/jeux', jeu.id]" class="text-decoration-none">
           <div class="card mb-4 h-100 shadow">
-            <!-- Retire overflow: hidden et utilise un style adaptatif -->
             <div class="card-img-container" style="height: 200px; background-color: #fff; text-align: center;">
               <img
                 [src]="jeu.imageUrl"

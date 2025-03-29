@@ -160,7 +160,7 @@
       "jeuClient": "The Legend of Zelda: Breath of the Wild",
       "plateformeClient": "Switch",
       "reservationDate": "2025-05-10",
-      "status": "Confirmée"
+      "status": "En attente"
     },
     {
       "id": "2",
@@ -170,7 +170,7 @@
       "jeuClient": "Super Mario Odyssey",
       "plateformeClient": "Switch",
       "reservationDate": "2025-04-15",
-      "status": "En attente"
+      "status": "Confirmée"
     },
     {
       "id": "3",
@@ -180,7 +180,7 @@
       "jeuClient": "God of War",
       "plateformeClient": "PS4",
       "reservationDate": "2025-03-20",
-      "status": "Confirmée"
+      "status": "En attente"
     },
     {
       "id": "4",
@@ -190,17 +190,7 @@
       "jeuClient": "Horizon Forbidden West",
       "plateformeClient": "PS5",
       "reservationDate": "2025-06-01",
-      "status": "Confirmée"
-    },
-    {
-      "id": "5",
-      "nomClient": "Emma",
-      "emailClient": "emma@example.com",
-      "telClient": "0600000002",
-      "jeuClient": "Halo Infinite",
-      "plateformeClient": "Xbox Series X",
-      "reservationDate": "2025-06-02",
-      "status": "En attente"
+      "status": "Annulée"
     },
     {
       "id": "6",
@@ -220,7 +210,7 @@
       "jeuClient": "Final Fantasy VII Remake",
       "plateformeClient": "PS4",
       "reservationDate": "2025-06-04",
-      "status": "Confirmée"
+      "status": "En attente"
     },
     {
       "id": "8",
@@ -250,7 +240,7 @@
       "jeuClient": "Cyberpunk 2077",
       "plateformeClient": "PC",
       "reservationDate": "2025-06-07",
-      "status": "Confirmée"
+      "status": "En attente"
     },
     {
       "id": "11",

@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class ReservationsListComponent {
   reservations: Reservation[] = [];
   editingReservation: Reservation | null = null;
-  filteredReservations: Reservation[] = [];
+  reservationCherchee: Reservation[] = [];
   searchControl: FormControl = new FormControl('');
   subscription: Subscription = new Subscription();
 
@@ -25,7 +25,7 @@ export class ReservationsListComponent {
     this.loadReservations();
     this.subscription.add(
       this.searchControl.valueChanges.subscribe(searchText => {
-        this.filteredReservations = this.reservations.filter(r =>
+        this.reservationCherchee = this.reservations.filter(r =>
           r.nomClient.toLowerCase().includes(searchText.toLowerCase()) ||
           r.jeuClient.toLowerCase().includes(searchText.toLowerCase()) ||
           r.status.toLowerCase().includes(searchText.toLowerCase())
@@ -37,7 +37,7 @@ export class ReservationsListComponent {
   loadReservations(): void {
     this.reservationsService.getReservations().subscribe(data => {
       this.reservations = data;
-      this.filteredReservations = data;
+      this.reservationCherchee = data;
     });
   }
 
@@ -69,6 +69,7 @@ export class ReservationsListComponent {
     if (confirm('Confirmez-vous la suppression de cette réservation ?')) {
       this.reservationsService.deleteReservation(id).subscribe(() => {
         this.reservations = this.reservations.filter((r) => r.id !== id);
+        window.location.reload();
       });
     }
   }

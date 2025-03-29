@@ -4,27 +4,12 @@
     <!-- Nom du client -->
     <div class="mb-3">
       <label for="nomClient" class="form-label">Nom du client :</label>
-      <input
-        id="nomClient"
-        type="text"
-        formControlName="nomClient"
-        class="form-control"
-      />
-      <div
-        *ngIf="
-          reservationForm.get('nomClient')?.touched &&
-          reservationForm.get('nomClient')?.invalid
-        "
-        class="text-danger"
-      >
-        <small
-          *ngIf="reservationForm.get('nomClient')?.errors?.['required']"
-        >
+      <input id="nomClient" type="text" formControlName="nomClient" class="form-control" />
+      <div *ngIf="reservationForm.get('nomClient')?.touched && reservationForm.get('nomClient')?.invalid" class="text-danger">
+        <small *ngIf="reservationForm.get('nomClient')?.errors?.['required']">
           Ce champ est requis.
         </small>
-        <small
-          *ngIf="reservationForm.get('nomClient')?.errors?.['minlength']"
-        >
+        <small *ngIf="reservationForm.get('nomClient')?.errors?.['minlength']">
           Minimum 3 caractères requis.
         </small>
       </div>
@@ -32,22 +17,9 @@
     <!-- Email -->
     <div class="mb-3">
       <label for="emailClient" class="form-label">Email :</label>
-      <input
-        id="emailClient"
-        type="email"
-        formControlName="emailClient"
-        class="form-control"
-      />
-      <div
-        *ngIf="
-          reservationForm.get('emailClient')?.touched &&
-          reservationForm.get('emailClient')?.invalid
-        "
-        class="text-danger"
-      >
-        <small
-          *ngIf="reservationForm.get('emailClient')?.errors?.['required']"
-        >
+      <input id="emailClient" type="email" formControlName="emailClient" class="form-control" />
+      <div *ngIf="reservationForm.get('emailClient')?.touched && reservationForm.get('emailClient')?.invalid" class="text-danger">
+        <small *ngIf="reservationForm.get('emailClient')?.errors?.['required']">
           Ce champ est requis.
         </small>
         <small *ngIf="reservationForm.get('emailClient')?.errors?.['email']">
@@ -58,42 +30,21 @@
     <!-- Téléphone -->
     <div class="mb-3">
       <label for="telClient" class="form-label">Téléphone :</label>
-      <input
-        id="telClient"
-        type="text"
-        formControlName="telClient"
-        class="form-control"
-      />
-      <div
-        *ngIf="
-          reservationForm.get('telClient')?.touched &&
-          reservationForm.get('telClient')?.invalid
-        "
-        class="text-danger"
-      >
-        <small
-          *ngIf="reservationForm.get('telClient')?.errors?.['required']"
-        >
+      <input id="telClient" type="text" formControlName="telClient" class="form-control" />
+      <div *ngIf="reservationForm.get('telClient')?.touched && reservationForm.get('telClient')?.invalid" class="text-danger">
+        <small *ngIf="reservationForm.get('telClient')?.errors?.['required']">
           Ce champ est requis.
         </small>
       </div>
     </div>
-    <!-- Titre du jeu -->
+    <!-- Choix des jeux -->
     <div class="mb-3">
       <label for="jeuClient" class="form-label">Titre du jeu :</label>
-      <input
-        id="jeuClient"
-        type="text"
-        formControlName="jeuClient"
-        class="form-control"
-      />
-      <div
-        *ngIf="
-          reservationForm.get('jeuClient')?.touched &&
-          reservationForm.get('jeuClient')?.invalid
-        "
-        class="text-danger"
-      >
+      <select id="jeuClient" formControlName="jeuClient" class="form-select" required style="background-color: #2b2b2b;" data-dropup-auto="false">
+        <option value="">Sélectionnez un jeu</option>
+        <option *ngFor="let jeu of jeux" [value]="jeu.titre">{{ jeu.titre }}</option>
+      </select>
+      <div *ngIf="reservationForm.get('jeuClient')?.touched && reservationForm.get('jeuClient')?.invalid" class="text-danger">
         <small *ngIf="reservationForm.get('jeuClient')?.errors?.['required']">
           Ce champ est requis.
         </small>
@@ -102,19 +53,8 @@
     <!-- Plateforme -->
     <div class="mb-3">
       <label for="plateformeClient" class="form-label">Plateforme :</label>
-      <input
-        id="plateformeClient"
-        type="text"
-        formControlName="plateformeClient"
-        class="form-control"
-      />
-      <div
-        *ngIf="
-          reservationForm.get('plateformeClient')?.touched &&
-          reservationForm.get('plateformeClient')?.invalid
-        "
-        class="text-danger"
-      >
+      <input id="plateformeClient" type="text" formControlName="plateformeClient" class="form-control" />
+      <div *ngIf="reservationForm.get('plateformeClient')?.touched && reservationForm.get('plateformeClient')?.invalid" class="text-danger">
         <small *ngIf="reservationForm.get('plateformeClient')?.errors?.['required']">
           Ce champ est requis.
         </small>
@@ -122,25 +62,10 @@
     </div>
     <!-- Date de réservation -->
     <div class="mb-3">
-      <label for="reservationDate" class="form-label"
-        >Date de réservation :</label
-      >
-      <input
-        id="reservationDate"
-        type="date"
-        formControlName="reservationDate"
-        class="form-control"
-      />
-      <div
-        *ngIf="
-          reservationForm.get('reservationDate')?.touched &&
-          reservationForm.get('reservationDate')?.invalid
-        "
-        class="text-danger"
-      >
-        <small
-          *ngIf="reservationForm.get('reservationDate')?.errors?.['required']"
-        >
+      <label for="reservationDate" class="form-label">Date de réservation :</label>
+      <input id="reservationDate" type="date" formControlName="reservationDate" class="form-control" />
+      <div *ngIf="reservationForm.get('reservationDate')?.touched && reservationForm.get('reservationDate')?.invalid" class="text-danger">
+        <small *ngIf="reservationForm.get('reservationDate')?.errors?.['required']">
           Ce champ est requis.
         </small>
       </div>
@@ -154,11 +79,7 @@
         <option value="Annulée">Annulée</option>
       </select>
     </div>
-    <button
-      type="submit"
-      [disabled]="reservationForm.invalid"
-      class="btn btn-primary"
-    >
+    <button type="submit" [disabled]="reservationForm.invalid" class="btn btn-primary">
       Enregistrer la réservation
     </button>
   </form>

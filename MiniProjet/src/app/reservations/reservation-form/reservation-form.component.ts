@@ -3,23 +3,27 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationsService } from '../../services/reservations.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reservation } from '../../models/reservation.model';
+import { JeuxService } from '../../services/jeux.service'; // importer le service des jeux
+import { Jeu } from '../../models/jeu.model';
 
 @Component({
   selector: 'app-reservation-form',
   standalone: false,
   templateUrl: './reservation-form.component.html',
-  styleUrl: './reservation-form.component.scss',
+  styleUrls: ['./reservation-form.component.scss'],
 })
-export class ReservationFormComponent {
+export class ReservationFormComponent implements OnInit {
   reservationForm: FormGroup;
   editMode: boolean = false;
-  reservationId?: number; 
+  reservationId?: number;
+  jeux: Jeu[] = []; // propriété pour stocker les jeux
 
   constructor(
     private fb: FormBuilder,
     private reservationsService: ReservationsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private jeuxService: JeuxService // injection du service
   ) {
     this.reservationForm = this.fb.group({
       nomClient: ['', [Validators.required, Validators.minLength(3)]],
@@ -33,31 +37,39 @@ export class ReservationFormComponent {
   }
 
   ngOnInit(): void {
+    // Charger la liste des jeux
+    this.jeuxService.getJeux().subscribe((data: Jeu[]) => {
+      this.jeux = data;
+    });
+
     this.route.paramMap.subscribe((params: any) => {
       const idParam = params.get('id');
       if (idParam) {
         this.editMode = true;
         this.reservationId = +idParam;
-        this.reservationsService.getReservation(this.reservationId).subscribe(reservation => {
-          if (reservation.status === 'Confirmée') {
-            alert("Cette réservation est confirmée et ne peut pas être modifiée.");
-            this.router.navigate(['/reservations']);
-          } else {
-            this.reservationForm.patchValue({
-              nomClient: reservation.nomClient,
-              emailClient: reservation.emailClient,
-              telClient: reservation.telClient,
-              jeuClient: reservation.jeuClient,
-              plateformeClient: reservation.plateformeClient,
-              reservationDate: reservation.reservationDate,
-              status: reservation.status
-            });
-          }
-        });
+        this.reservationsService
+          .getReservation(this.reservationId)
+          .subscribe((reservation) => {
+            if (reservation.status === 'Confirmée') {
+              alert(
+                'Cette réservation est confirmée et ne peut pas être modifiée.'
+              );
+              this.router.navigate(['/reservations']);
+            } else {
+              this.reservationForm.patchValue({
+                nomClient: reservation.nomClient,
+                emailClient: reservation.emailClient,
+                telClient: reservation.telClient,
+                jeuClient: reservation.jeuClient,
+                plateformeClient: reservation.plateformeClient,
+                reservationDate: reservation.reservationDate,
+                status: reservation.status,
+              });
+            }
+          });
       }
     });
   }
-  
 
   onSubmit(): void {
     if (this.reservationForm.valid) {

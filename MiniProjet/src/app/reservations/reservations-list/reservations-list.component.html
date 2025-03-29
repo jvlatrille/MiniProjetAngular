@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let reservation of filteredReservations">
+        <tr *ngFor="let reservation of reservationCherchee">
           <!-- Edition inline si en cours -->
           <ng-container *ngIf="editingReservation && editingReservation.id === reservation.id; else displayRow">
             <td>
@@ -62,13 +62,12 @@
             <td>{{ reservation.reservationDate }}</td>
             <td>{{ reservation.status }}</td>
             <td>
-              <ng-container *ngIf="reservation.status !== 'Confirmée'; else noActions">
-                <button class="btn btn-sm btn-primary me-2" (click)="startEditing(reservation)">Modifier</button>
-                <button class="btn btn-sm btn-danger" (click)="deleteReservation(reservation.id!)">Supprimer</button>
+              <ng-container *ngIf="reservation.status !== 'Confirmée' && reservation.status !== 'Annulée';">
+                <div class="d-flex justify-content-center gap-2">
+                  <button class="btn btn-sm btn-primary" (click)="startEditing(reservation)">Modifier</button>
+                  <button class="btn btn-sm btn-danger" (click)="deleteReservation(reservation.id!)">Supprimer</button>
+                </div>
               </ng-container>
-              <ng-template #noActions>
-                <span class="text-muted">Aucune action</span>
-              </ng-template>
             </td>
           </ng-template>
         </tr>
