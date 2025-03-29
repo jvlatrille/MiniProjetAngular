@@ -52,12 +52,10 @@
     </div>
     <!-- Plateforme -->
     <div class="mb-3">
-      <label for="plateformeClient" class="form-label">Plateforme :</label>
-      <input id="plateformeClient" type="text" formControlName="plateformeClient" class="form-control" />
+      <label for="plateformeClient" class="form-label" >Plateforme :</label>
+      <input id="plateformeClient" type="text" formControlName="plateformeClient" style="background-color: #2b2b2b; color: #ffffff;" class="form-control" readonly />
       <div *ngIf="reservationForm.get('plateformeClient')?.touched && reservationForm.get('plateformeClient')?.invalid" class="text-danger">
-        <small *ngIf="reservationForm.get('plateformeClient')?.errors?.['required']">
-          Ce champ est requis.
-        </small>
+        <small *ngIf="reservationForm.get('plateformeClient')?.errors?.['required']">Ce champ est requis.</small>
       </div>
     </div>
     <!-- Date de réservation -->
@@ -73,7 +71,7 @@
     <!-- Statut -->
     <div class="mb-3">
       <label for="status" class="form-label">Statut :</label>
-      <select id="status" formControlName="status" class="form-select">
+      <select id="status" formControlName="status" style="background-color: #2b2b2b;" class="form-select">
         <option value="Confirmée">Confirmée</option>
         <option value="En attente">En attente</option>
         <option value="Annulée">Annulée</option>

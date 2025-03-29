@@ -16,14 +16,14 @@ export class ReservationFormComponent implements OnInit {
   reservationForm: FormGroup;
   editMode: boolean = false;
   reservationId?: number;
-  jeux: Jeu[] = []; // propriété pour stocker les jeux
+  jeux: Jeu[] = [];
 
   constructor(
     private fb: FormBuilder,
     private reservationsService: ReservationsService,
     private router: Router,
     private route: ActivatedRoute,
-    private jeuxService: JeuxService // injection du service
+    private jeuxService: JeuxService
   ) {
     this.reservationForm = this.fb.group({
       nomClient: ['', [Validators.required, Validators.minLength(3)]],
@@ -37,9 +37,22 @@ export class ReservationFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Charger la liste des jeux
     this.jeuxService.getJeux().subscribe((data: Jeu[]) => {
       this.jeux = data;
+      this.reservationForm
+        .get('jeuClient')
+        ?.valueChanges.subscribe((selectedTitle) => {
+          const selectedGame = this.jeux.find(
+            (jeu) => jeu.titre === selectedTitle
+          );
+          if (selectedGame) {
+            this.reservationForm
+              .get('plateformeClient')
+              ?.setValue(selectedGame.plateforme);
+          } else {
+            this.reservationForm.get('plateformeClient')?.setValue('');
+          }
+        });
     });
 
     this.route.paramMap.subscribe((params: any) => {

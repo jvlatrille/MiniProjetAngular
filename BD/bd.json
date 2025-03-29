@@ -291,6 +291,16 @@
       "plateformeClient": "PS5",
       "reservationDate": "2025-06-12",
       "status": "Confirmée"
+    },
+    {
+      "id": "e2e9",
+      "nomClient": "Jules VINET LATRILLE",
+      "emailClient": "julesvinet64@gmail.com",
+      "telClient": "0607845150",
+      "jeuClient": "Cyberpunk 2077",
+      "plateformeClient": "PC",
+      "reservationDate": "2005-09-20",
+      "status": "En attente"
     }
   ]
 }
