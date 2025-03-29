@@ -27,7 +27,7 @@ export class ReservationFormComponent implements OnInit {
   ) {
     this.reservationForm = this.fb.group({
       nomClient: ['', [Validators.required, Validators.minLength(3)]],
-      emailClient: ['', [Validators.required, Validators.email]],
+      emailClient: ['@gmail.com', [Validators.required, Validators.email]],
       telClient: ['', Validators.required],
       jeuClient: ['', Validators.required],
       plateformeClient: ['', Validators.required],
@@ -61,11 +61,11 @@ export class ReservationFormComponent implements OnInit {
         this.editMode = true;
         this.reservationId = +idParam;
         this.reservationsService
-          .getReservation(this.reservationId)
+          .getUneReservation(this.reservationId)
           .subscribe((reservation) => {
             if (reservation.status === 'Confirmée') {
               alert(
-                'Cette réservation est confirmée et ne peut pas être modifiée.'
+                'Comment vous avez fait pour modifier une réservation confirmée ???'
               );
               this.router.navigate(['/reservations']);
             } else {

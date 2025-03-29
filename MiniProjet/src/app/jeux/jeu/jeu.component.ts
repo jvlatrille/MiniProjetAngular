@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './jeu.component.html',
-  styleUrls: ['./jeu.component.scss']
+  styleUrls: ['./jeu.component.scss'],
 })
 export class JeuComponent implements OnInit {
   jeu!: Jeu;
@@ -21,7 +21,7 @@ export class JeuComponent implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.jeuxService.getJeu(id).subscribe(data => {
+    this.jeuxService.getUnJeu(id).subscribe((data) => {
       this.jeu = data;
     });
   }

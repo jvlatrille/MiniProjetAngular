@@ -12,8 +12,8 @@ import { Subscription } from 'rxjs';
 })
 export class JeuxListComponent {
   jeux: Jeu[] = [];
-  filteredJeux: Jeu[] = [];
-  searchControl: FormControl = new FormControl('');
+  jeuxCherche: Jeu[] = [];
+  controlerRecherche: FormControl = new FormControl('');
   subscription: Subscription = new Subscription();
 
   constructor(private jeuxService: JeuxService) {}
@@ -21,12 +21,12 @@ export class JeuxListComponent {
   ngOnInit(): void {
     this.jeuxService.getJeux().subscribe((data) => {
       this.jeux = data;
-      this.filteredJeux = data;
+      this.jeuxCherche = data;
     });
 
     this.subscription.add(
-      this.searchControl.valueChanges.subscribe(searchText => {
-        this.filteredJeux = this.jeux.filter(jeu =>
+      this.controlerRecherche.valueChanges.subscribe(searchText => {
+        this.jeuxCherche = this.jeux.filter(jeu =>
           jeu.titre.toLowerCase().includes(searchText.toLowerCase()) ||
           jeu.plateforme.toLowerCase().includes(searchText.toLowerCase()) ||
           jeu.genre.toLowerCase().includes(searchText.toLowerCase()) ||

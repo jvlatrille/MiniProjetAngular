@@ -2,18 +2,15 @@
   <div class="container py-4">
     <h2 class="mb-4" style="color: #fff;">Liste des jeux vidéo</h2>
     <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Rechercher un jeu..." [formControl]="searchControl">
+      <input type="text" class="form-control" placeholder="Rechercher un jeu..." [formControl]="controlerRecherche">
     </div>
     <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let jeu of filteredJeux">
+      <div class="col-md-4 mb-4" *ngFor="let jeu of jeuxCherche">
         <a [routerLink]="['/jeux', jeu.id]" class="text-decoration-none">
           <div class="card mb-4 h-100 shadow">
             <div class="card-img-container" style="height: 200px; background-color: #fff; text-align: center;">
-              <img
-                [src]="jeu.imageUrl"
-                alt="{{ jeu.titre }}"
-                style="max-height: 100%; max-width: 100%; object-fit: contain;"
-              >
+              <img [src]="jeu.imageUrl" alt="{{ jeu.titre }}"
+                style="max-height: 100%; max-width: 100%; object-fit: contain;">
             </div>
             <div class="card-body" style="background-color: #fff; color: #000;">
               <h5 class="card-title">{{ jeu.titre }}</h5>

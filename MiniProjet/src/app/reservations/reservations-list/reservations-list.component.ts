@@ -12,61 +12,59 @@ import { Subscription } from 'rxjs';
 })
 export class ReservationsListComponent {
   reservations: Reservation[] = [];
-  editingReservation: Reservation | null = null;
+  editionReservation: Reservation | null = null;
   reservationCherchee: Reservation[] = [];
-  searchControl: FormControl = new FormControl('');
+  controlerRecherche: FormControl = new FormControl('');
   subscription: Subscription = new Subscription();
 
-  constructor(
-    private reservationsService: ReservationsService,
-  ) {}
+  constructor(private reservationsService: ReservationsService) {}
 
   ngOnInit(): void {
-    this.loadReservations();
+    this.listerReservations();
     this.subscription.add(
-      this.searchControl.valueChanges.subscribe(searchText => {
-        this.reservationCherchee = this.reservations.filter(r =>
-          r.nomClient.toLowerCase().includes(searchText.toLowerCase()) ||
-          r.jeuClient.toLowerCase().includes(searchText.toLowerCase()) ||
-          r.status.toLowerCase().includes(searchText.toLowerCase())
+      this.controlerRecherche.valueChanges.subscribe((searchText) => {
+        this.reservationCherchee = this.reservations.filter(
+          (r) =>
+            r.nomClient.toLowerCase().includes(searchText.toLowerCase()) ||
+            r.jeuClient.toLowerCase().includes(searchText.toLowerCase()) ||
+            r.status.toLowerCase().includes(searchText.toLowerCase())
         );
       })
     );
   }
 
-  loadReservations(): void {
-    this.reservationsService.getReservations().subscribe(data => {
+  listerReservations(): void {
+    this.reservationsService.getReservations().subscribe((data) => {
       this.reservations = data;
       this.reservationCherchee = data;
     });
   }
 
-  // Méthodes pour l'édition inline (voir le point précédent)
-  startEditing(reservation: Reservation): void {
+  modifierReservation(reservation: Reservation): void {
     if (reservation.status === 'Confirmée') {
-      alert("Cette réservation est confirmée et ne peut pas être modifiée.");
+      alert("Comment t'as fait pour modifier une réservation confirmée ???");
       return;
     }
-    this.editingReservation = { ...reservation };
+    this.editionReservation = { ...reservation };
   }
 
-  cancelEditing(): void {
-    this.editingReservation = null;
+  annulerModificationReservation(): void {
+    this.editionReservation = null;
   }
 
-  saveEditing(): void {
-    if (this.editingReservation) {
+  sauvegarderModificationReservation(): void {
+    if (this.editionReservation) {
       this.reservationsService
-        .updateReservation(this.editingReservation.id!, this.editingReservation)
+        .updateReservation(this.editionReservation.id!, this.editionReservation)
         .subscribe(() => {
-          this.loadReservations();
-          this.editingReservation = null;
+          this.listerReservations();
+          this.editionReservation = null;
         });
     }
   }
 
   deleteReservation(id: number): void {
-    if (confirm('Confirmez-vous la suppression de cette réservation ?')) {
+    if (confirm('Êtes vous sûr de vouloir supprimer cette réservation ?')) {
       this.reservationsService.deleteReservation(id).subscribe(() => {
         this.reservations = this.reservations.filter((r) => r.id !== id);
         window.location.reload();
