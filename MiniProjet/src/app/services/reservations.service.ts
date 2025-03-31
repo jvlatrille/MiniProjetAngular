@@ -8,27 +8,28 @@ import { Reservation } from '../models/reservation.model';
 })
 export class ReservationsService {
 
-  private baseUrl = 'http://localhost:3000';
+  // private urlAngular = 'http://localhost:3000';
+  private urlLaravel = 'http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) {}
 
   getReservations(): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(`${this.baseUrl}/reservations`);
+    return this.http.get<Reservation[]>(`${this.urlLaravel}/reservations`);
   }
 
   getUneReservation(id: number): Observable<Reservation> {
-    return this.http.get<Reservation>(`${this.baseUrl}/reservations/${id}`);
+    return this.http.get<Reservation>(`${this.urlLaravel}/reservations/${id}`);
   }
 
   addReservation(reservation: Reservation): Observable<Reservation> {
-    return this.http.post<Reservation>(`${this.baseUrl}/reservations`, reservation);
+    return this.http.post<Reservation>(`${this.urlLaravel}/reservations`, reservation);
   }
 
   updateReservation(id: number, reservation: Reservation): Observable<Reservation> {
-    return this.http.put<Reservation>(`${this.baseUrl}/reservations/${id}`, reservation);
+    return this.http.put<Reservation>(`${this.urlLaravel}/reservations/${id}`, reservation);
   }
 
   deleteReservation(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/reservations/${id}`);
+    return this.http.delete<void>(`${this.urlLaravel}/reservations/${id}`);
   }
 }
