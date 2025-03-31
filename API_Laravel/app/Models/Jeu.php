@@ -18,6 +18,6 @@ class Jeu extends Model
         'developpeur',
         'dateDeSortie',
         'stock',
-        'image_url',
+        'imageUrl',
     ];
 }

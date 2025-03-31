@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('developpeur');
             $table->date('dateDeSortie');
             $table->integer('stock');
-            $table->string('image_url')->nullable();
+            $table->string('imageUrl')->nullable();
             $table->timestamps();
         });
     }
