@@ -44,7 +44,7 @@
     <div class="mb-3">
       <label for="jeuClient" class="form-label">Titre du jeu :</label>
       <select id="jeuClient" formControlName="jeuClient" class="form-select" required style="background-color: #2b2b2b;"
-        data-dropup-auto="false">
+        data-dropup-auto="false"> 
         <option value="">Sélectionnez un jeu</option>
         <option *ngFor="let jeu of jeux" [value]="jeu.titre">{{ jeu.titre }}</option>
       </select>

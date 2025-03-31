@@ -2,7 +2,7 @@
   <div class="container py-4">
     <h2 class="mb-4" style="color: #fff;">Liste des jeux vidéo</h2>
     <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Rechercher un jeu..." [formControl]="controlerRecherche">
+      <input type="text" class="form-control" placeholder="Nom, genre, Développeur" [formControl]="controlerRecherche">
     </div>
     <div class="row">
       <div class="col-md-4 mb-4" *ngFor="let jeu of jeuxCherche">

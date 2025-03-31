@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationsService } from '../../services/reservations.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reservation } from '../../models/reservation.model';
-import { JeuxService } from '../../services/jeux.service'; // importer le service des jeux
+import { JeuxService } from '../../services/jeux.service';
 import { Jeu } from '../../models/jeu.model';
 
 @Component({

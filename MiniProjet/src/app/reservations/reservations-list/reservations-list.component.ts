@@ -26,8 +26,10 @@ export class ReservationsListComponent {
         this.reservationCherchee = this.reservations.filter(
           (r) =>
             r.nomClient.toLowerCase().includes(searchText.toLowerCase()) ||
+            r.emailClient.toLowerCase().includes(searchText.toLowerCase()) ||
+            r.telClient.toLowerCase().includes(searchText.toLowerCase()) ||
             r.jeuClient.toLowerCase().includes(searchText.toLowerCase()) ||
-            r.status.toLowerCase().includes(searchText.toLowerCase())
+            r.plateformeClient.toLowerCase().includes(searchText.toLowerCase())
         );
       })
     );

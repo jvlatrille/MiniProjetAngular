@@ -28,7 +28,6 @@ export class JeuxListComponent {
       this.controlerRecherche.valueChanges.subscribe(searchText => {
         this.jeuxCherche = this.jeux.filter(jeu =>
           jeu.titre.toLowerCase().includes(searchText.toLowerCase()) ||
-          jeu.plateforme.toLowerCase().includes(searchText.toLowerCase()) ||
           jeu.genre.toLowerCase().includes(searchText.toLowerCase()) ||
           jeu.developpeur.toLowerCase().includes(searchText.toLowerCase())
         );
