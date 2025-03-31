@@ -16,7 +16,7 @@ class Jeu extends Model
         'plateforme',
         'genre',
         'developpeur',
-        'date_de_sortie',
+        'dateDeSortie',
         'stock',
         'image_url',
     ];

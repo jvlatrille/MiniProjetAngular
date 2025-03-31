@@ -21,18 +21,22 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nom_client' => 'required|min:3',
-            'email_client' => 'required|email',
-            'tel_client' => 'required',
-            'jeu_client' => 'required',
-            'plateforme_client' => 'required',
-            'reservation_date' => 'required|date',
+        // Valide directement les clés en camelCase
+        $validatedData = $request->validate([
+            'nomClient' => 'required|min:3',
+            'emailClient' => 'required|email',
+            'telClient' => 'required',
+            'jeuClient' => 'required',
+            'plateformeClient' => 'required',
+            'reservationDate' => 'required|date',
             'status' => 'required|in:Confirmée,En attente,Annulée',
         ]);
-        $reservation = Reservation::create($data);
+
+        $reservation = \App\Models\Reservation::create($validatedData);
         return response()->json($reservation, 201);
     }
+
+
 
     /**
      * Display the specified resource.
@@ -56,12 +60,12 @@ class ReservationController extends Controller
             return response()->json(['message' => 'Reservation non trouvée'], 404);
         }
         $data = $request->validate([
-            'nom_client' => 'required|min:3',
-            'email_client' => 'required|email',
-            'tel_client' => 'required',
-            'jeu_client' => 'required',
-            'plateforme_client' => 'required',
-            'reservation_date' => 'required|date',
+            'nomClient' => 'required|min:3',
+            'emailClient' => 'required|email',
+            'telClient' => 'required',
+            'jeuClient' => 'required',
+            'plateformeClient' => 'required',
+            'reservationDate' => 'required|date',
             'status' => 'required|in:Confirmée,En attente,Annulée',
         ]);
         $reservation->update($data);

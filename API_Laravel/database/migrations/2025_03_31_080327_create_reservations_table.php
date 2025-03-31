@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_client');
-            $table->string('email_client');
-            $table->string('tel_client');
-            $table->string('jeu_client');
-            $table->string('plateforme_client');
-            $table->date('reservation_date');
+            $table->string('nomClient');
+            $table->string('emailClient');
+            $table->string('telClient');
+            $table->string('jeuClient');
+            $table->string('plateformeClient');
+            $table->date('reservationDate');
             $table->enum('status', ['Confirmée', 'En attente', 'Annulée']);
             $table->timestamps();
         });

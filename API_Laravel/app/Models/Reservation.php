@@ -10,12 +10,12 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom_client',
-        'email_client',
-        'tel_client',
-        'jeu_client',
-        'plateforme_client',
-        'reservation_date',
+        'nomClient',
+        'emailClient',
+        'telClient',
+        'jeuClient',
+        'plateformeClient',
+        'reservationDate',
         'status',
     ];
 }

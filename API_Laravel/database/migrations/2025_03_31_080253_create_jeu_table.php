@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('plateforme');
             $table->string('genre');
             $table->string('developpeur');
-            $table->date('date_de_sortie');
+            $table->date('dateDeSortie');
             $table->integer('stock');
             $table->string('image_url')->nullable();
             $table->timestamps();
