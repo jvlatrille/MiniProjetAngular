@@ -8,16 +8,18 @@ import { Jeu } from '../models/jeu.model';
 })
 export class JeuxService {
 
-  // private urlAngular = 'http://localhost:3000';
-  private urlLaravel = 'http://127.0.0.1:8000/api';
+  // API Angular
+  // private api = 'http://localhost:3000';
+  // API Laravel
+  private api = 'http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) {}
 
   getJeux(): Observable<Jeu[]> {
-    return this.http.get<Jeu[]>(`${this.urlLaravel}/jeu`);
+    return this.http.get<Jeu[]>(`${this.api}/jeu`);
   }
 
   getUnJeu(id: number): Observable<Jeu> {
-    return this.http.get<Jeu>(`${this.urlLaravel}/jeu/${id}`);
+    return this.http.get<Jeu>(`${this.api}/jeu/${id}`);
   } 
 }
