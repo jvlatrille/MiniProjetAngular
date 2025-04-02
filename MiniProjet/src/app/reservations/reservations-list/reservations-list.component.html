@@ -20,6 +20,13 @@
         <option *ngFor="let status of distinctStatuses" [value]="status">{{ status }}</option>
       </select>
     </div>
+    <div>
+      <label class="me-2 text-white" for="platformFilter">Filtrer par jeu :</label>
+      <select class="form-select" id="gameFilter" [(ngModel)]="selectedJeuReservation">
+        <option value="">Tous</option>
+        <option *ngFor="let jeu of distinctJeux" [value]="jeu">{{ jeu }}</option>
+      </select>
+    </div>
   </div>
   <div class="table-responsive">
     <table class="table table-striped table-hover">

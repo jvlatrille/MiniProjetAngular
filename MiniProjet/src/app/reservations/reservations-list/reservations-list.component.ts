@@ -18,6 +18,7 @@ export class ReservationsListComponent {
   subscription: Subscription = new Subscription();
   selectedPlateformeReservation: string = '';
   selectedStatusReservation: string = '';
+  selectedJeuReservation: string = '';
 
   constructor(private reservationsService: ReservationsService) {}
 
@@ -84,10 +85,16 @@ export class ReservationsListComponent {
     return [...new Set(this.reservations.map(r => r.status))];
   }
 
+  get distinctJeux(): string[] {
+    return [...new Set(this.reservations.map(r => r.jeuClient))];
+  }
+
   get filteredReservations(): Reservation[] {
     return this.reservationCherchee.filter(
-      r => (!this.selectedPlateformeReservation || r.plateformeClient === this.selectedPlateformeReservation)
-        && (!this.selectedStatusReservation || r.status === this.selectedStatusReservation)
+      r =>
+        (!this.selectedPlateformeReservation || r.plateformeClient === this.selectedPlateformeReservation) &&
+        (!this.selectedStatusReservation || r.status === this.selectedStatusReservation) &&
+        (!this.selectedJeuReservation || r.jeuClient === this.selectedJeuReservation)
     );
-  }
+  }  
 }
