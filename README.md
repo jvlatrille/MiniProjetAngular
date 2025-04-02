@@ -63,7 +63,10 @@
 ---
 
 ## Lancer le Backend avec l'API Angulat
-
-**Configurer la base de données**  
-   Depuis la racine, lancer le serveur json : 
+1. **Installer les dépendances**  
+   Depuis le dossier racine, lancer :
+   ```bash
+   npm install
+   ```
+   Et ensuite, executer la commande : 
    ```json-server --watch BD/bd.json```
