@@ -4,25 +4,40 @@
     <div class="mb-3">
       <input type="text" class="form-control" placeholder="Nom, genre, Développeur" [formControl]="controlerRecherche">
     </div>
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let jeu of jeuxCherche">
-        <a [routerLink]="['/jeux', jeu.id]" class="text-decoration-none">
-          <div class="card mb-4 h-100 shadow">
-            <div class="card-img-container" style="height: 200px; background-color: #fff; text-align: center;">
-              <img [src]="jeu.imageUrl" alt="{{ jeu.titre }}"
-                style="max-height: 100%; max-width: 100%; object-fit: contain;">
-            </div>
-            <div class="card-body" style="background-color: #fff; color: #000;">
-              <h5 class="card-title">{{ jeu.titre }}</h5>
-              <p class="card-text">
-                <strong>Genre :</strong> {{ jeu.genre }}<br>
-                <strong>Plateforme :</strong> {{ jeu.plateforme }}<br>
-                <strong>Développeur :</strong> {{ jeu.developpeur }}
-              </p>
-            </div>
-          </div>
-        </a>
+    <div class="mb-3">
+      <label class="me-2" style="color: #fff;">Filtrer par plateforme :</label>
+      <div class="form-check form-check-inline" *ngFor="let platform of distinctPlateformes">
+        <input class="form-check-input" type="radio" name="platformFilter" [id]="platform" [value]="platform"
+          [(ngModel)]="selectedPlateforme">
+        <label class="form-check-label" [for]="platform" style="color: #fff;">{{ platform }}</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="platformFilter" id="allPlatforms" value=""
+          [(ngModel)]="selectedPlateforme">
+        <label class="form-check-label" for="allPlatforms" style="color: #fff;">Tous</label>
+      </div>
+    </div>
+    <div class="row">
+      <ng-container *ngFor="let jeu of jeuxCherche">
+        <div class="col-md-4 mb-4" *ngIf="!selectedPlateforme || jeu.plateforme === selectedPlateforme">
+          <a [routerLink]="['/jeux', jeu.id]" class="text-decoration-none">
+            <div class="card mb-4 h-100 shadow">
+              <div class="card-img-container" style="height: 200px; background-color: #fff; text-align: center;">
+                <img [src]="jeu.imageUrl" alt="{{ jeu.titre }}"
+                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+              </div>
+              <div class="card-body" style="background-color: #fff; color: #000;">
+                <h5 class="card-title">{{ jeu.titre }}</h5>
+                <p class="card-text">
+                  <strong>Genre :</strong> {{ jeu.genre }}<br>
+                  <strong>Plateforme :</strong> {{ jeu.plateforme }}<br>
+                  <strong>Développeur :</strong> {{ jeu.developpeur }}
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </ng-container>
     </div>
   </div>
 </div>

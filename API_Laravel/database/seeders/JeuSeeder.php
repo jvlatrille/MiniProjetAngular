@@ -180,6 +180,17 @@ class JeuSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
             ],
+            [
+                'titre' => "Super Mario Galaxy",
+                'plateforme' => "Wii",
+                'genre' => "Plateforme",
+                'developpeur' => "Nintendo",
+                'dateDeSortie' => "2007-11-12",
+                'stock' => 10,
+                'imageUrl' => "https://m.media-amazon.com/images/I/81FduhCXYdL.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

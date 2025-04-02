@@ -15,6 +15,7 @@ export class JeuxListComponent {
   jeuxCherche: Jeu[] = [];
   controlerRecherche: FormControl = new FormControl('');
   subscription: Subscription = new Subscription();
+  selectedPlateforme: string = '';
 
   constructor(private jeuxService: JeuxService) {}
 
@@ -38,5 +39,10 @@ export class JeuxListComponent {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
     }
+
+
+  get distinctPlateformes(): string[] {
+    return [...new Set(this.jeuxCherche.map(jeu => jeu.plateforme))];
+  }
   
 }
