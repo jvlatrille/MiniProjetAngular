@@ -16,6 +16,8 @@ export class ReservationsListComponent {
   reservationCherchee: Reservation[] = [];
   controlerRecherche: FormControl = new FormControl('');
   subscription: Subscription = new Subscription();
+  selectedPlateformeReservation: string = '';
+  selectedStatusReservation: string = '';
 
   constructor(private reservationsService: ReservationsService) {}
 
@@ -73,4 +75,20 @@ export class ReservationsListComponent {
       });
     }
   }
+
+  get distinctPlateformes(): string[] {
+    return [...new Set(this.reservations.map(r => r.plateformeClient))];
+  }
+
+  get filteredReservations(): Reservation[] {
+    return this.reservationCherchee.filter(
+      r => (!this.selectedPlateformeReservation || r.plateformeClient === this.selectedPlateformeReservation)
+        && (!this.selectedStatusReservation || r.status === this.selectedStatusReservation)
+    );
+  }
+
+  get distinctStatuses(): string[] {
+    return [...new Set(this.reservations.map(r => r.status))];
+  }
+
 }
