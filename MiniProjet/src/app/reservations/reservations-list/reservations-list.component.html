@@ -5,30 +5,20 @@
     <input type="text" class="form-control" placeholder="Nom, email, téléphone, titre, ou plateforme"
       [formControl]="controlerRecherche">
   </div>
-  <div class="mb-3">
-    <label class="me-2 text-white">Filtrer par plateforme :</label>
-    <div class="form-check form-check-inline" *ngFor="let platform of distinctPlateformes">
-      <input class="form-check-input" type="radio" name="platformReservationFilter" [id]="platform" [value]="platform"
-        [(ngModel)]="selectedPlateformeReservation">
-      <label class="form-check-label" [for]="platform" style="color: #fff;">{{ platform }}</label>
+  <div class="mb-3 d-flex align-items-center gap-3">
+    <div>
+      <label class="me-2 text-white" for="platformFilter">Filtrer par plateforme :</label>
+      <select class="form-select" id="platformFilter" [(ngModel)]="selectedPlateformeReservation">
+        <option value="">Tous</option>
+        <option *ngFor="let platform of distinctPlateformes" [value]="platform">{{ platform }}</option>
+      </select>
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="platformReservationFilter" id="allPlatforms" value=""
-        [(ngModel)]="selectedPlateformeReservation">
-      <label class="form-check-label" for="allPlatforms" style="color: #fff;">Tous</label>
-    </div>
-  </div>
-  <div class="mb-3">
-    <label class="me-2 text-white">Filtrer par status :</label>
-    <div class="form-check form-check-inline" *ngFor="let status of distinctStatuses">
-      <input class="form-check-input" type="radio" name="statusReservationFilter" [id]="status" [value]="status"
-        [(ngModel)]="selectedStatusReservation">
-      <label class="form-check-label" [for]="status" style="color: #fff;">{{ status }}</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="statusReservationFilter" id="allStatuses" value=""
-        [(ngModel)]="selectedStatusReservation">
-      <label class="form-check-label" for="allStatuses" style="color: #fff;">Tous</label>
+    <div>
+      <label class="me-2 text-white" for="statusFilter">Filtrer par status :</label>
+      <select class="form-select" id="statusFilter" [(ngModel)]="selectedStatusReservation">
+        <option value="">Tous</option>
+        <option *ngFor="let status of distinctStatuses" [value]="status">{{ status }}</option>
+      </select>
     </div>
   </div>
   <div class="table-responsive">

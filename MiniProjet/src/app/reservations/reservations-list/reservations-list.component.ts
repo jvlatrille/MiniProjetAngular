@@ -80,15 +80,14 @@ export class ReservationsListComponent {
     return [...new Set(this.reservations.map(r => r.plateformeClient))];
   }
 
+  get distinctStatuses(): string[] {
+    return [...new Set(this.reservations.map(r => r.status))];
+  }
+
   get filteredReservations(): Reservation[] {
     return this.reservationCherchee.filter(
       r => (!this.selectedPlateformeReservation || r.plateformeClient === this.selectedPlateformeReservation)
         && (!this.selectedStatusReservation || r.status === this.selectedStatusReservation)
     );
   }
-
-  get distinctStatuses(): string[] {
-    return [...new Set(this.reservations.map(r => r.status))];
-  }
-
 }

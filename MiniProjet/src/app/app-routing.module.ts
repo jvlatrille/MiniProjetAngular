@@ -6,7 +6,7 @@ import { ReservationFormComponent } from './reservations/reservation-form/reserv
 import { JeuComponent } from './jeux/jeu/jeu.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/jeux', pathMatch: 'full' },
+  { path: '', component: JeuxListComponent },
   { path: 'jeux', component: JeuxListComponent },
   { path: 'jeux/:id', component: JeuComponent },
   { path: 'reservations', component: ReservationsListComponent },

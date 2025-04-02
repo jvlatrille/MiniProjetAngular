@@ -16,6 +16,7 @@ export class JeuxListComponent {
   controlerRecherche: FormControl = new FormControl('');
   subscription: Subscription = new Subscription();
   selectedPlateforme: string = '';
+  selectedGenre: string = '';
 
   constructor(private jeuxService: JeuxService) {}
 
@@ -45,4 +46,7 @@ export class JeuxListComponent {
     return [...new Set(this.jeuxCherche.map(jeu => jeu.plateforme))];
   }
   
+  get distinctGenres(): string[] {
+    return [...new Set(this.jeuxCherche.map(r => r.genre))];
+  }
 }
