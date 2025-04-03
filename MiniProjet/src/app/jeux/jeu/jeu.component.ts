@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { JeuxService } from '../../services/jeux.service';
 import { Jeu } from '../../models/jeu.model';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-jeu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './jeu.component.html',
   styleUrls: ['./jeu.component.scss'],
 })

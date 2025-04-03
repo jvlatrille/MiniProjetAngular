@@ -19,6 +19,17 @@
                 {{ jeu.dateDeSortie | date : "yyyy-MM-dd" }}<br />
                 <strong>Stock disponible :</strong> {{ jeu.stock }}
               </p>
+                <a class="btn" 
+                  style="background-color: #FF5714; color: #000;" 
+                  routerLink="/jeux">
+                Retour à la liste
+                </a>
+                <a class="btn ms-2" 
+                 style="background-color: #FF5714; color: #000;" 
+                 [routerLink]="['/reservations/new']" 
+                 [queryParams]="{ jeu: jeu.titre, plateforme: jeu.plateforme }">
+                Réserver
+                </a>
             </div>
           </div>
         </div>

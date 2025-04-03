@@ -39,20 +39,16 @@ export class ReservationFormComponent implements OnInit {
   ngOnInit(): void {
     this.jeuxService.getJeux().subscribe((data: Jeu[]) => {
       this.jeux = data;
-      this.reservationForm
-        .get('jeuClient')
-        ?.valueChanges.subscribe((selectedTitle) => {
-          const selectedGame = this.jeux.find(
-            (jeu) => jeu.titre === selectedTitle
-          );
-          if (selectedGame) {
-            this.reservationForm
-              .get('plateformeClient')
-              ?.setValue(selectedGame.plateforme);
-          } else {
-            this.reservationForm.get('plateformeClient')?.setValue('');
-          }
+    });
+
+    // Préremplissage via queryParams (pour réservation directe depuis un jeu)
+    this.route.queryParams.subscribe(params => {
+      if (params['jeu'] && params['plateforme']) {
+        this.reservationForm.patchValue({
+          jeuClient: params['jeu'],
+          plateformeClient: params['plateforme']
         });
+      }
     });
 
     this.route.paramMap.subscribe((params: any) => {
@@ -60,26 +56,22 @@ export class ReservationFormComponent implements OnInit {
       if (idParam) {
         this.editMode = true;
         this.reservationId = +idParam;
-        this.reservationsService
-          .getUneReservation(this.reservationId)
-          .subscribe((reservation) => {
-            if (reservation.status === 'Confirmée') {
-              alert(
-                'Comment vous avez fait pour modifier une réservation confirmée ???'
-              );
-              this.router.navigate(['/reservations']);
-            } else {
-              this.reservationForm.patchValue({
-                nomClient: reservation.nomClient,
-                emailClient: reservation.emailClient,
-                telClient: reservation.telClient,
-                jeuClient: reservation.jeuClient,
-                plateformeClient: reservation.plateformeClient,
-                reservationDate: reservation.reservationDate,
-                status: reservation.status,
-              });
-            }
-          });
+        this.reservationsService.getUneReservation(this.reservationId).subscribe((reservation) => {
+          if (reservation.status === 'Confirmée') {
+            alert("Comment vous avez fait pour modifier une réservation confirmée ???");
+            this.router.navigate(['/reservations']);
+          } else {
+            this.reservationForm.patchValue({
+              nomClient: reservation.nomClient,
+              emailClient: reservation.emailClient,
+              telClient: reservation.telClient,
+              jeuClient: reservation.jeuClient,
+              plateformeClient: reservation.plateformeClient,
+              reservationDate: reservation.reservationDate,
+              status: reservation.status,
+            });
+          }
+        });
       }
     });
   }
