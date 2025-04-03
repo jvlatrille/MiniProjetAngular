@@ -39,8 +39,22 @@ export class ReservationFormComponent implements OnInit {
   ngOnInit(): void {
     this.jeuxService.getJeux().subscribe((data: Jeu[]) => {
       this.jeux = data;
+      this.reservationForm
+        .get('jeuClient')
+        ?.valueChanges.subscribe((selectedTitle) => {
+          const selectedGame = this.jeux.find(
+            (jeu) => jeu.titre === selectedTitle
+          );
+          if (selectedGame) {
+            this.reservationForm
+              .get('plateformeClient')
+              ?.setValue(selectedGame.plateforme);
+          } else {
+            this.reservationForm.get('plateformeClient')?.setValue('');
+          }
+        });
     });
-
+    
     // Préremplissage via queryParams (pour réservation directe depuis un jeu)
     this.route.queryParams.subscribe(params => {
       if (params['jeu'] && params['plateforme']) {
