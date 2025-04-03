@@ -22,4 +22,8 @@ export class JeuxService {
   getUnJeu(id: number): Observable<Jeu> {
     return this.http.get<Jeu>(`${this.api}/jeu/${id}`);
   } 
+
+  addJeu(jeu: Jeu): Observable<Jeu> {
+    return this.http.post<Jeu>(`${this.api}/jeu`, jeu);
+  }  
 }

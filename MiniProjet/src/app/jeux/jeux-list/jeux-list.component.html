@@ -4,25 +4,32 @@
     <div class="mb-3">
       <input type="text" class="form-control" placeholder="Nom, genre, Développeur" [formControl]="controlerRecherche">
     </div>
-    <div class="mb-3 d-flex align-items-center">
-      <div class="me-3">
-      <label for="platformFilterDropdown" class="me-2" style="color: #fff;">Filtrer par plateforme :</label>
-      <select id="platformFilterDropdown" class="form-select" [(ngModel)]="selectedPlateforme">
-        <option value="">Tous</option>
-        <option *ngFor="let platform of distinctPlateformes" [value]="platform">{{ platform }}</option>
-      </select>
+    <div class="mb-3 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center me-3">
+        <label for="platformFilterDropdown" class="me-2" style="color: #fff;">Filtrer par plateforme :</label>
+        <select id="platformFilterDropdown" class="form-select" [(ngModel)]="selectedPlateforme"
+          style="min-width: 150px;">
+          <option value="">Tous</option>
+          <option *ngFor="let platform of distinctPlateformes" [value]="platform">{{ platform }}</option>
+        </select>
+      </div>
+      <div class="d-flex align-items-center me-3">
+        <label for="genreFilterDropdown" class="me-2" style="color: #fff;">Filtrer par genre :</label>
+        <select id="genreFilterDropdown" class="form-select" [(ngModel)]="selectedGenre" style="min-width: 150px;">
+          <option value="">Tous</option>
+          <option *ngFor="let genre of distinctGenres" [value]="genre">{{ genre }}</option>
+        </select>
       </div>
       <div>
-      <label for="genreFilterDropdown" class="me-2" style="color: #fff;">Filtrer par genre :</label>
-      <select id="genreFilterDropdown" class="form-select" [(ngModel)]="selectedGenre">
-        <option value="">Tous</option>
-        <option *ngFor="let genre of distinctGenres" [value]="genre">{{ genre }}</option>
-      </select>
+        <a routerLink="/jeu-form" class="btn" style="background-color: #FF5714; color: #000;">
+          Ajouter un jeu <strong>+</strong>
+        </a>
       </div>
     </div>
     <div class="row">
       <ng-container *ngFor="let jeu of jeuxCherche">
-        <div class="col-md-4 mb-4" *ngIf="(!selectedPlateforme || jeu.plateforme === selectedPlateforme) && (!selectedGenre || jeu.genre === selectedGenre)">
+        <div class="col-md-4 mb-4"
+          *ngIf="(!selectedPlateforme || jeu.plateforme === selectedPlateforme) && (!selectedGenre || jeu.genre === selectedGenre)">
           <a [routerLink]="['/jeux', jeu.id]" class="text-decoration-none">
             <div class="card mb-4 h-100 shadow">
               <div class="card-img-container" style="height: 200px; background-color: #fff; text-align: center;">
@@ -42,7 +49,7 @@
             </div>
           </a>
         </div>
-      </ng-container>      
+      </ng-container>
     </div>
   </div>
 </div>

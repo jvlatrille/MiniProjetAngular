@@ -1,0 +1,36 @@
+<div class="container my-4">
+    <h2 class="mb-4">Ajouter un jeu</h2>
+    <form [formGroup]="jeuForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="titre" class="form-label">Titre :</label>
+            <input id="titre" type="text" formControlName="titre" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="plateforme" class="form-label">Plateforme :</label>
+            <input id="plateforme" type="text" formControlName="plateforme" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="genre" class="form-label">Genre :</label>
+            <input id="genre" type="text" formControlName="genre" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="developpeur" class="form-label">Développeur :</label>
+            <input id="developpeur" type="text" formControlName="developpeur" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="dateDeSortie" class="form-label">Date de sortie :</label>
+            <input id="dateDeSortie" type="date" formControlName="dateDeSortie" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="stock" class="form-label">Stock :</label>
+            <input id="stock" type="number" formControlName="stock" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="imageUrl" class="form-label">URL de l'image :</label>
+            <input id="imageUrl" type="text" formControlName="imageUrl" class="form-control">
+        </div>
+        <button type="submit" [disabled]="jeuForm.invalid" class="btn btn-primary">
+            Ajouter le jeu
+        </button>
+    </form>
+</div>

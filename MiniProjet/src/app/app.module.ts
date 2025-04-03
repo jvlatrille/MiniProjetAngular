@@ -15,6 +15,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { JeuComponent } from './jeux/jeu/jeu.component';
+import { JeuFormComponent } from './jeux/jeu-form/jeu-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { JeuComponent } from './jeux/jeu/jeu.component';
     JeuxListComponent,
     ReservationsListComponent,
     ReservationFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    JeuFormComponent
   ],
   imports: [
     BrowserModule,

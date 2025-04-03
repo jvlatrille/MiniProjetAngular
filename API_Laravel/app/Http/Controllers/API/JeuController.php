@@ -21,7 +21,18 @@ class JeuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'titre' => 'required|string|max:255',
+            'plateforme' => 'required|string|max:255',
+            'genre' => 'required|string|max:255',
+            'developpeur' => 'required|string|max:255',
+            'dateDeSortie' => 'required|date',
+            'stock' => 'required|integer',
+            'imageUrl' => 'nullable|string',
+        ]);
+
+        $jeu = \App\Models\Jeu::create($validatedData);
+        return response()->json($jeu, 201);
     }
 
     /**
