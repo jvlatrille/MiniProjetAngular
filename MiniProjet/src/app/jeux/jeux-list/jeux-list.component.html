@@ -32,9 +32,11 @@
               <div class="card-body" style="background-color: #fff; color: #000;">
                 <h5 class="card-title">{{ jeu.titre }}</h5>
                 <p class="card-text">
-                  <strong>Genre :</strong> {{ jeu.genre }}<br>
-                  <strong>Plateforme :</strong> {{ jeu.plateforme }}<br>
-                  <strong>Développeur :</strong> {{ jeu.developpeur }}
+                  <strong> Plateforme :</strong> {{ jeu.plateforme }}<br>
+                  <strong> Genre :</strong> {{ jeu.genre }}<br>
+                  <strong> Développeur :</strong> {{ jeu.developpeur }}<br>
+                  <strong> Date de sortie :</strong> {{ jeu.dateDeSortie | date:'dd/MM/yyyy' }}<br>
+                  <strong> Stock :</strong> {{ jeu.stock }}<br>
                 </p>
               </div>
             </div>

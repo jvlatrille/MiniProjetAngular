@@ -21,7 +21,6 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        // Valide directement les clés en camelCase
         $validatedData = $request->validate([
             'nomClient' => 'required|min:3',
             'emailClient' => 'required|email',
@@ -33,6 +32,18 @@ class ReservationController extends Controller
         ]);
 
         $reservation = \App\Models\Reservation::create($validatedData);
+
+        $jeu = \App\Models\Jeu::where('titre', $reservation->jeuClient)
+                ->where('plateforme', $reservation->plateformeClient)
+                ->first();
+
+        if ($jeu) {
+            if ($jeu->stock > 0) {
+                $jeu->stock = $jeu->stock - 1;
+                $jeu->save();
+            }
+        }
+
         return response()->json($reservation, 201);
     }
 
@@ -81,7 +92,18 @@ class ReservationController extends Controller
         if (!$reservation) {
             return response()->json(['message' => 'Reservation non trouvée'], 404);
         }
+
+        $jeu = \App\Models\Jeu::where('titre', $reservation->jeuClient)
+                ->where('plateforme', $reservation->plateformeClient)
+                ->first();
+
+        if ($jeu) {
+            $jeu->stock = $jeu->stock + 1;
+            $jeu->save();
+        }
+
         $reservation->delete();
         return response()->json(['message' => 'Reservation supprimée']);
     }
+
 }
