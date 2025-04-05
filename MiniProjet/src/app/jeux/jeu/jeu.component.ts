@@ -8,22 +8,30 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-jeu',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './jeu.component.html',
   styleUrls: ['./jeu.component.scss'],
 })
 export class JeuComponent implements OnInit {
-  jeu!: Jeu;
+  jeu!: Jeu | null;
+  loading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
     private jeuxService: JeuxService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.jeuxService.getUnJeu(id).subscribe((data) => {
-      this.jeu = data;
+    this.jeuxService.getUnJeu(id).subscribe({
+      next: (data) => {
+        this.jeu = data;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error(error);
+        this.loading = false;
+      }
     });
   }
 }

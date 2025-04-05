@@ -1,35 +1,35 @@
-<div class="container my-4" *ngIf="jeu">
-  <div class="row justify-content-center">
-    <div class="col-md-10">
-      <div class="card shadow">
-        <div class="card-header bg-light">
-          <h3 class="mb-0">{{ jeu.titre }}</h3>
-        </div>
-        <div class="row g-0">
-          <div class="col-md-5">
-            <img [src]="jeu.imageUrl" class="img-fluid rounded-start" alt="{{ jeu.titre }}" />
+<div *ngIf="!loading; else loadingTemplate">
+  <div class="container my-4" *ngIf="jeu; else notFound">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card shadow">
+          <div class="card-header bg-light">
+            <h3 class="mb-0">{{ jeu.titre }}</h3>
           </div>
-          <div class="col-md-7">
-            <div class="card-body">
-              <p class="card-text">
-                <strong>Genre :</strong> {{ jeu.genre }}<br />
-                <strong>Plateforme :</strong> {{ jeu.plateforme }}<br />
-                <strong>Développeur :</strong> {{ jeu.developpeur }}<br />
-                <strong>Date de sortie :</strong>
-                {{ jeu.dateDeSortie | date : "yyyy-MM-dd" }}<br />
-                <strong>Stock disponible :</strong> {{ jeu.stock }}
-              </p>
-                <a class="btn" 
-                  style="background-color: #FF5714; color: #000;" 
-                  routerLink="/jeux">
-                Retour à la liste
-                </a>
-                <a class="btn ms-2" 
-                 style="background-color: #FF5714; color: #000;" 
-                 [routerLink]="['/reservations/new']" 
-                 [queryParams]="{ jeu: jeu.titre, plateforme: jeu.plateforme }">
-                Réserver
-                </a>
+          <div class="row g-0">
+            <div class="col-md-5">
+              <img [src]="jeu.imageUrl" class="img-fluid rounded-start" alt="{{ jeu.titre }}" />
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <p class="card-text">
+                  <strong>Genre :</strong> {{ jeu.genre }}<br />
+                  <strong>Plateforme :</strong> {{ jeu.plateforme }}<br />
+                  <strong>Développeur :</strong> {{ jeu.developpeur }}<br />
+                  <strong>Date de sortie :</strong> {{ jeu.dateDeSortie | date:"yyyy-MM-dd" }}<br />
+                  <strong>Stock disponible :</strong> {{ jeu.stock }}
+                </p>
+                <div class="button-group">
+                  <a class="btn" style="background-color: #FF5714; color: #000;" routerLink="/jeux">
+                    Retour à la liste
+                  </a>
+                  <a class="btn ms-2" style="background-color: #FF5714; color: #000;" 
+                     [routerLink]="['/reservations/new']" 
+                     [queryParams]="{ jeu: jeu.titre, plateforme: jeu.plateforme }">
+                    Réserver
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -37,3 +37,15 @@
     </div>
   </div>
 </div>
+
+<ng-template #loadingTemplate>
+  <div class="container my-4">
+    <p>Chargement du jeu...</p>
+  </div>
+</ng-template>
+
+<ng-template #notFound>
+  <div class="container my-4">
+    <p>Jeu non trouvé.</p>
+  </div>
+</ng-template>

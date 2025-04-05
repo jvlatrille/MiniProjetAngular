@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-reservations-list',
   standalone: false,
   templateUrl: './reservations-list.component.html',
-  styleUrl: './reservations-list.component.scss',
+  styleUrls: ['./reservations-list.component.scss'],
 })
 export class ReservationsListComponent {
   reservations: Reservation[] = [];

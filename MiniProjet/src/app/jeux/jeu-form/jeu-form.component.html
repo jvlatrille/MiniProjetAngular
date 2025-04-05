@@ -1,32 +1,59 @@
 <div class="container my-4">
-    <h2 class="mb-4">Ajouter un jeu</h2>
+    <h2 class="mb-4 text-white">Ajouter un jeu</h2>
     <form [formGroup]="jeuForm" (ngSubmit)="onSubmit()">
+        <!-- Titre -->
         <div class="mb-3">
-            <label for="titre" class="form-label">Titre :</label>
+            <label for="titre" class="form-label text-white">Titre :</label>
             <input id="titre" type="text" formControlName="titre" class="form-control">
+            <div *ngIf="jeuForm.get('titre')?.touched && jeuForm.get('titre')?.invalid" class="text-danger">
+                <small *ngIf="jeuForm.get('titre')?.errors?.['required']">Le titre est requis.</small>
+            </div>
         </div>
+        <!-- Plateforme -->
         <div class="mb-3">
-            <label for="plateforme" class="form-label">Plateforme :</label>
+            <label for="plateforme" class="form-label text-white">Plateforme :</label>
             <input id="plateforme" type="text" formControlName="plateforme" class="form-control">
+            <div *ngIf="jeuForm.get('plateforme')?.touched && jeuForm.get('plateforme')?.invalid" class="text-danger">
+                <small *ngIf="jeuForm.get('plateforme')?.errors?.['required']">La plateforme est requise.</small>
+            </div>
         </div>
+        <!-- Genre -->
         <div class="mb-3">
-            <label for="genre" class="form-label">Genre :</label>
+            <label for="genre" class="form-label text-white">Genre :</label>
             <input id="genre" type="text" formControlName="genre" class="form-control">
+            <div *ngIf="jeuForm.get('genre')?.touched && jeuForm.get('genre')?.invalid" class="text-danger">
+                <small *ngIf="jeuForm.get('genre')?.errors?.['required']">Le genre est requis.</small>
+            </div>
         </div>
+        <!-- Développeur -->
         <div class="mb-3">
-            <label for="developpeur" class="form-label">Développeur :</label>
+            <label for="developpeur" class="form-label text-white">Développeur :</label>
             <input id="developpeur" type="text" formControlName="developpeur" class="form-control">
+            <div *ngIf="jeuForm.get('developpeur')?.touched && jeuForm.get('developpeur')?.invalid" class="text-danger">
+                <small *ngIf="jeuForm.get('developpeur')?.errors?.['required']">Le développeur est requis.</small>
+            </div>
         </div>
+        <!-- Date de sortie -->
         <div class="mb-3">
-            <label for="dateDeSortie" class="form-label">Date de sortie :</label>
+            <label for="dateDeSortie" class="form-label text-white">Date de sortie :</label>
             <input id="dateDeSortie" type="date" formControlName="dateDeSortie" class="form-control">
+            <div *ngIf="jeuForm.get('dateDeSortie')?.touched && jeuForm.get('dateDeSortie')?.invalid"
+                class="text-danger">
+                <small *ngIf="jeuForm.get('dateDeSortie')?.errors?.['required']">La date de sortie est requise.</small>
+            </div>
         </div>
+        <!-- Stock -->
         <div class="mb-3">
-            <label for="stock" class="form-label">Stock :</label>
+            <label for="stock" class="form-label text-white">Stock :</label>
             <input id="stock" type="number" formControlName="stock" class="form-control">
+            <div *ngIf="jeuForm.get('stock')?.touched && jeuForm.get('stock')?.invalid" class="text-danger">
+                <small *ngIf="jeuForm.get('stock')?.errors?.['required']">Le stock est requis.</small>
+                <small *ngIf="jeuForm.get('stock')?.errors?.['min']">Le stock ne peut être négatif.</small>
+            </div>
         </div>
+        <!-- URL de l'image -->
         <div class="mb-3">
-            <label for="imageUrl" class="form-label">URL de l'image :</label>
+            <label for="imageUrl" class="form-label text-white">URL de l'image :</label>
             <input id="imageUrl" type="text" formControlName="imageUrl" class="form-control">
         </div>
         <button type="submit" [disabled]="jeuForm.invalid" class="btn btn-primary">

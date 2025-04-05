@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JeuxService } from '../../services/jeux.service';
 import { Router } from '@angular/router';
@@ -8,9 +8,9 @@ import { Jeu } from '../../models/jeu.model';
   selector: 'app-jeu-form',
   standalone: false,
   templateUrl: './jeu-form.component.html',
-  styleUrl: './jeu-form.component.scss'
+  styleUrls: ['./jeu-form.component.scss'],
 })
-export class JeuFormComponent {
+export class JeuFormComponent implements OnInit {
   jeuForm: FormGroup;
 
   constructor(
@@ -19,17 +19,17 @@ export class JeuFormComponent {
     private router: Router
   ) {
     this.jeuForm = this.fb.group({
-      titre: ['', [Validators.required]],
-      plateforme: ['', [Validators.required]],
-      genre: ['', [Validators.required]],
-      developpeur: ['', [Validators.required]],
-      dateDeSortie: ['', [Validators.required]],
+      titre: ['', Validators.required],
+      plateforme: ['', Validators.required],
+      genre: ['', Validators.required],
+      developpeur: ['', Validators.required],
+      dateDeSortie: ['', Validators.required],
       stock: ['', [Validators.required, Validators.min(0)]],
       imageUrl: ['']
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit(): void {
     if (this.jeuForm.valid) {

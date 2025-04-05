@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-jeux-list',
   standalone: false,
   templateUrl: './jeux-list.component.html',
-  styleUrl: './jeux-list.component.scss',
+  styleUrls: ['./jeux-list.component.scss'],
 })
 export class JeuxListComponent {
   jeux: Jeu[] = [];

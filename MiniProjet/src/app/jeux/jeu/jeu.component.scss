@@ -1,0 +1,18 @@
+.card {
+    margin-top: 1rem;
+}
+
+.button-group {
+    margin-top: 1rem;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #FFD700;
+    color: #000;
+}
