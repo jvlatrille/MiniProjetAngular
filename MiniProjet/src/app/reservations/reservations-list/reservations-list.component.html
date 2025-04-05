@@ -2,8 +2,7 @@
   <h2 class="mb-4 text-white">Liste des réservations</h2>
   <!-- Champ de recherche -->
   <div class="mb-3">
-    <input type="text" class="form-control" placeholder="Nom, email, téléphone, titre, ou plateforme"
-      [formControl]="controlerRecherche">
+    <input type="text" class="form-control" placeholder="Nom, email, téléphone, titre, ou plateforme" [formControl]="controlerRecherche">
   </div>
   <div class="mb-3 d-flex align-items-center justify-content-between">
     <div>
@@ -21,7 +20,7 @@
       </select>
     </div>
     <div>
-      <label class="me-2 text-white" for="platformFilter">Filtrer par jeu :</label>
+      <label class="me-2 text-white" for="gameFilter">Filtrer par jeu :</label>
       <select class="form-select" id="gameFilter" [(ngModel)]="selectedJeuReservation">
         <option value="">Tous</option>
         <option *ngFor="let jeu of distinctJeux" [value]="jeu">{{ jeu }}</option>
@@ -46,31 +45,25 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let reservation of filteredReservations">
+        <tr *ngFor="let reservation of filteredReservations;">
           <ng-container *ngIf="editionReservation && editionReservation.id === reservation.id; else displayRow">
             <td>
-              <input class="form-control" [(ngModel)]="editionReservation.nomClient"
-                name="nomClient-{{reservation.id}}">
+              <input class="form-control" [(ngModel)]="editionReservation.nomClient" name="nomClient-{{reservation.id}}">
             </td>
             <td>
-              <input class="form-control" [(ngModel)]="editionReservation.emailClient"
-                name="emailClient-{{reservation.id}}">
+              <input class="form-control" [(ngModel)]="editionReservation.emailClient" name="emailClient-{{reservation.id}}">
             </td>
             <td>
-              <input class="form-control" [(ngModel)]="editionReservation.telClient"
-                name="telClient-{{reservation.id}}">
+              <input class="form-control" [(ngModel)]="editionReservation.telClient" name="telClient-{{reservation.id}}">
             </td>
             <td>
-              <input class="form-control" [(ngModel)]="editionReservation.jeuClient"
-                name="jeuClient-{{reservation.id}}">
+              <input class="form-control" [(ngModel)]="editionReservation.jeuClient" name="jeuClient-{{reservation.id}}">
             </td>
             <td>
-              <input class="form-control" [(ngModel)]="editionReservation.plateformeClient"
-                name="plateformeClient-{{reservation.id}}">
+              <input class="form-control" [(ngModel)]="editionReservation.plateformeClient" name="plateformeClient-{{reservation.id}}">
             </td>
             <td>
-              <input class="form-control" type="date" [(ngModel)]="editionReservation.reservationDate"
-                name="reservationDate-{{reservation.id}}">
+              <input class="form-control" type="date" [(ngModel)]="editionReservation.reservationDate" name="reservationDate-{{reservation.id}}">
             </td>
             <td>
               <select class="form-select" [(ngModel)]="editionReservation.status" name="status-{{reservation.id}}">

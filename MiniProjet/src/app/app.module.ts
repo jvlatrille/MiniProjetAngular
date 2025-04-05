@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { JeuComponent } from './jeux/jeu/jeu.component';
 import { JeuFormComponent } from './jeux/jeu-form/jeu-form.component';
+import { JeuCardComponent } from './jeux/jeu-card/jeu-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { JeuFormComponent } from './jeux/jeu-form/jeu-form.component';
     ReservationsListComponent,
     ReservationFormComponent,
     HeaderComponent,
-    JeuFormComponent
+    JeuFormComponent,
+    JeuCardComponent
   ],
   imports: [
     BrowserModule,

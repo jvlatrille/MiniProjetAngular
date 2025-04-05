@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationsService } from '../../services/reservations.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reservation } from '../../models/reservation.model';
-import { JeuxService } from '../../services/jeux.service';
+// import { JeuxService } from '../../services/jeux.service';
+import { ApiService } from '../../services/api.service';
 import { Jeu } from '../../models/jeu.model';
 
 @Component({
@@ -23,11 +24,11 @@ export class ReservationFormComponent implements OnInit {
     private reservationsService: ReservationsService,
     private router: Router,
     private route: ActivatedRoute,
-    private jeuxService: JeuxService
+    private jeuxService: ApiService
   ) {
     this.reservationForm = this.fb.group({
       nomClient: ['', [Validators.required, Validators.minLength(3)]],
-      emailClient: ['@gmail.com', [Validators.required, Validators.email]],
+      emailClient: ['', [Validators.required, Validators.email]],
       telClient: ['', Validators.required],
       jeuClient: ['', Validators.required],
       plateformeClient: ['', Validators.required],
@@ -39,23 +40,16 @@ export class ReservationFormComponent implements OnInit {
   ngOnInit(): void {
     this.jeuxService.getJeux().subscribe((data: Jeu[]) => {
       this.jeux = data;
-      this.reservationForm
-        .get('jeuClient')
-        ?.valueChanges.subscribe((selectedTitle) => {
-          const selectedGame = this.jeux.find(
-            (jeu) => jeu.titre === selectedTitle
-          );
-          if (selectedGame) {
-            this.reservationForm
-              .get('plateformeClient')
-              ?.setValue(selectedGame.plateforme);
-          } else {
-            this.reservationForm.get('plateformeClient')?.setValue('');
-          }
-        });
+      this.reservationForm.get('jeuClient')?.valueChanges.subscribe((selectedTitle) => {
+        const selectedGame = this.jeux.find(jeu => jeu.titre === selectedTitle);
+        if (selectedGame) {
+          this.reservationForm.get('plateformeClient')?.setValue(selectedGame.plateforme);
+        } else {
+          this.reservationForm.get('plateformeClient')?.setValue('');
+        }
+      });
     });
-    
-    // Préremplissage via queryParams (pour réservation directe depuis un jeu)
+
     this.route.queryParams.subscribe(params => {
       if (params['jeu'] && params['plateforme']) {
         this.reservationForm.patchValue({
@@ -65,6 +59,7 @@ export class ReservationFormComponent implements OnInit {
       }
     });
 
+    // Gestion du mode édition si un id est présent dans les paramètres de route
     this.route.paramMap.subscribe((params: any) => {
       const idParam = params.get('id');
       if (idParam) {
@@ -72,7 +67,7 @@ export class ReservationFormComponent implements OnInit {
         this.reservationId = +idParam;
         this.reservationsService.getUneReservation(this.reservationId).subscribe((reservation) => {
           if (reservation.status === 'Confirmée') {
-            alert("Comment vous avez fait pour modifier une réservation confirmée ???");
+            alert("Modification impossible : cette réservation est confirmée.");
             this.router.navigate(['/reservations']);
           } else {
             this.reservationForm.patchValue({
@@ -97,7 +92,7 @@ export class ReservationFormComponent implements OnInit {
         this.router.navigate(['/reservations']);
       });
     } else {
-      console.log('Le formulaire est invalide :', this.reservationForm.value);
+      console.log('Formulaire invalide :', this.reservationForm.value);
     }
   }
 }

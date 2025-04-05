@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Jeu } from '../models/jeu.model';
 
+/**
+ * LES SERVICES ONT ÉTÉ REGROUPÉS DANS API.SERVICE.TS
+ */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JeuxService {
-
   // API Angular
   // private api = 'http://localhost:3000';
   // API Laravel
@@ -21,9 +23,9 @@ export class JeuxService {
 
   getUnJeu(id: number): Observable<Jeu> {
     return this.http.get<Jeu>(`${this.api}/jeu/${id}`);
-  } 
+  }
 
   addJeu(jeu: Jeu): Observable<Jeu> {
     return this.http.post<Jeu>(`${this.api}/jeu`, jeu);
-  }  
+  }
 }

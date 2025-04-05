@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { JeuxService } from '../../services/jeux.service';
+// import { JeuxService } from '../../services/jeux.service';
+import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { Jeu } from '../../models/jeu.model';
 
@@ -12,24 +13,35 @@ import { Jeu } from '../../models/jeu.model';
 })
 export class JeuFormComponent implements OnInit {
   jeuForm: FormGroup;
+  thumbRegex!: RegExp;
 
   constructor(
     private fb: FormBuilder,
-    private jeuxService: JeuxService,
+    private jeuxService: ApiService,
     private router: Router
   ) {
     this.jeuForm = this.fb.group({
-      titre: ['', Validators.required],
-      plateforme: ['', Validators.required],
+      titre: ['', [Validators.required, Validators.minLength(3)]],
+      plateforme: ['', [Validators.required, Validators.email]],
       genre: ['', Validators.required],
       developpeur: ['', Validators.required],
       dateDeSortie: ['', Validators.required],
       stock: ['', [Validators.required, Validators.min(0)]],
-      imageUrl: ['']
+      imageUrl: ['', [Validators.required, Validators.pattern(this.thumbRegex)]]
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.thumbRegex = new RegExp(
+      'https?:\\/\\/.*\\.(?:png|jpg|jpeg|gif|svg|webp)$'
+    );
+    
+    this.jeuForm.get('imageUrl')?.setValidators([
+      Validators.required,
+      Validators.pattern(this.thumbRegex)
+    ]);
+    this.jeuForm.get('imageUrl')?.updateValueAndValidity();
+  }
 
   onSubmit(): void {
     if (this.jeuForm.valid) {

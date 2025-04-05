@@ -27,29 +27,12 @@
       </div>
     </div>
     <div class="row">
-      <ng-container *ngFor="let jeu of jeuxCherche">
+      <ng-container *ngFor="let jeu of jeuxCherche;">
         <div class="col-md-4 mb-4"
-          *ngIf="(!selectedPlateforme || jeu.plateforme === selectedPlateforme) && (!selectedGenre || jeu.genre === selectedGenre)">
-          <a [routerLink]="['/jeux', jeu.id]" class="text-decoration-none">
-            <div class="card mb-4 h-100 shadow">
-              <div class="card-img-container" style="height: 200px; background-color: #fff; text-align: center;">
-                <img [src]="jeu.imageUrl" alt="{{ jeu.titre }}"
-                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
-              </div>
-              <div class="card-body" style="background-color: #fff; color: #000;">
-                <h5 class="card-title">{{ jeu.titre }}</h5>
-                <p class="card-text">
-                  <strong> Plateforme :</strong> {{ jeu.plateforme }}<br>
-                  <strong> Genre :</strong> {{ jeu.genre }}<br>
-                  <strong> Développeur :</strong> {{ jeu.developpeur }}<br>
-                  <strong> Date de sortie :</strong> {{ jeu.dateDeSortie | date:'dd/MM/yyyy' }}<br>
-                  <strong> Stock :</strong> {{ jeu.stock }}<br>
-                </p>
-              </div>
-            </div>
-          </a>
+             *ngIf="(!selectedPlateforme || jeu.plateforme === selectedPlateforme) && (!selectedGenre || jeu.genre === selectedGenre)">
+          <app-jeu-card [jeu]="jeu"></app-jeu-card>
         </div>
       </ng-container>
-    </div>
+    </div>    
   </div>
 </div>

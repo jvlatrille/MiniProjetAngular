@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { JeuxService } from '../../services/jeux.service';
+// import { JeuxService } from '../../services/jeux.service';
+import { ApiService } from '../../services/api.service';
 import { Jeu } from '../../models/jeu.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -18,7 +19,7 @@ export class JeuComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private jeuxService: JeuxService
+    private jeuxService: ApiService
   ) { }
 
   ngOnInit(): void {

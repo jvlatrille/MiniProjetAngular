@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ReservationsService } from '../../services/reservations.service';
 import { Reservation } from '../../models/reservation.model';
 import { FormControl } from '@angular/forms';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './reservations-list.component.html',
   styleUrls: ['./reservations-list.component.scss'],
 })
-export class ReservationsListComponent {
+export class ReservationsListComponent implements OnInit, OnDestroy {
   reservations: Reservation[] = [];
   editionReservation: Reservation | null = null;
   reservationCherchee: Reservation[] = [];
@@ -26,13 +26,12 @@ export class ReservationsListComponent {
     this.listerReservations();
     this.subscription.add(
       this.controlerRecherche.valueChanges.subscribe((searchText) => {
-        this.reservationCherchee = this.reservations.filter(
-          (r) =>
-            r.nomClient.toLowerCase().includes(searchText.toLowerCase()) ||
-            r.emailClient.toLowerCase().includes(searchText.toLowerCase()) ||
-            r.telClient.toLowerCase().includes(searchText.toLowerCase()) ||
-            r.jeuClient.toLowerCase().includes(searchText.toLowerCase()) ||
-            r.plateformeClient.toLowerCase().includes(searchText.toLowerCase())
+        this.reservationCherchee = this.reservations.filter((r) =>
+          r.nomClient.toLowerCase().includes(searchText.toLowerCase()) ||
+          r.emailClient.toLowerCase().includes(searchText.toLowerCase()) ||
+          r.telClient.toLowerCase().includes(searchText.toLowerCase()) ||
+          r.jeuClient.toLowerCase().includes(searchText.toLowerCase()) ||
+          r.plateformeClient.toLowerCase().includes(searchText.toLowerCase())
         );
       })
     );
@@ -47,7 +46,7 @@ export class ReservationsListComponent {
 
   modifierReservation(reservation: Reservation): void {
     if (reservation.status === 'Confirmée') {
-      alert("Comment t'as fait pour modifier une réservation confirmée ???");
+      alert("Modification impossible : réservation confirmée.");
       return;
     }
     this.editionReservation = { ...reservation };
@@ -69,13 +68,16 @@ export class ReservationsListComponent {
   }
 
   deleteReservation(id: number): void {
-    if (confirm('Êtes vous sûr de vouloir supprimer cette réservation ?')) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette réservation ?')) {
       this.reservationsService.deleteReservation(id).subscribe(() => {
+        // Met à jour la liste localement sans recharger la page (plus opti)
         this.reservations = this.reservations.filter((r) => r.id !== id);
-        window.location.reload();
+        this.reservationCherchee = this.reservationCherchee.filter((r) => r.id !== id);
       });
     }
   }
+
+
 
   get distinctPlateformes(): string[] {
     return [...new Set(this.reservations.map(r => r.plateformeClient))];
@@ -96,5 +98,9 @@ export class ReservationsListComponent {
         (!this.selectedStatusReservation || r.status === this.selectedStatusReservation) &&
         (!this.selectedJeuReservation || r.jeuClient === this.selectedJeuReservation)
     );
-  }  
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

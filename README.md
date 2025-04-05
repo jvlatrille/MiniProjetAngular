@@ -17,7 +17,7 @@
 ## Choix de l'API
 
 - **Changer l'URL de l'API** :  
-  Dans les fichiers Angular `MiniProjet/src/app/services/jeux.service.ts` et  `MiniProjet/src/app/services/reservations.service.ts`, commentez / décommentez la ligne de l'API que vous souhaitez :
+  Dans le fichier `MiniProjet/src/app/services/api.service.ts`, commentez / décommentez la ligne de l'API que vous souhaitez :
   ```typescript
   // API Angular
   // private api = 'http://localhost:3000';

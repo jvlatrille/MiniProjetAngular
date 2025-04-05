@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { JeuxService } from '../../services/jeux.service';
+// import { JeuxService } from '../../services/jeux.service';
+import { ApiService } from '../../services/api.service';
 import { Jeu } from '../../models/jeu.model';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -18,7 +19,7 @@ export class JeuxListComponent {
   selectedPlateforme: string = '';
   selectedGenre: string = '';
 
-  constructor(private jeuxService: JeuxService) {}
+  constructor(private jeuxService: ApiService) {}
 
   ngOnInit(): void {
     this.jeuxService.getJeux().subscribe((data) => {

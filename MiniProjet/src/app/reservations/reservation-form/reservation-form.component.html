@@ -1,85 +1,71 @@
 <div class="container my-4">
-  <h2 class="mb-4">Nouvelle Réservation</h2>
+  <h2 class="mb-4" style="color: #fff;">Nouvelle Réservation</h2>
   <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
-    <!-- Nom du client -->
+    <!-- Nom client -->
     <div class="mb-3">
-      <label for="nomClient" class="form-label">Nom du client :</label>
+      <label for="nomClient" class="form-label" style="color: #fff;">Nom du client :</label>
       <input id="nomClient" type="text" formControlName="nomClient" class="form-control" />
       <div *ngIf="reservationForm.get('nomClient')?.touched && reservationForm.get('nomClient')?.invalid"
         class="text-danger">
-        <small *ngIf="reservationForm.get('nomClient')?.errors?.['required']">
-          Ce champ est requis.
-        </small>
-        <small *ngIf="reservationForm.get('nomClient')?.errors?.['minlength']">
-          Minimum 3 caractères requis.
-        </small>
+        <small *ngIf="reservationForm.get('nomClient')?.errors?.['required']">Ce champ est requis.</small>
+        <small *ngIf="reservationForm.get('nomClient')?.errors?.['minlength']">Minimum 3 caractères requis.</small>
       </div>
     </div>
     <!-- Email -->
     <div class="mb-3">
-      <label for="emailClient" class="form-label">Email :</label>
+      <label for="emailClient" class="form-label" style="color: #fff;">Email :</label>
       <input id="emailClient" type="email" formControlName="emailClient" class="form-control" />
       <div *ngIf="reservationForm.get('emailClient')?.touched && reservationForm.get('emailClient')?.invalid"
         class="text-danger">
-        <small *ngIf="reservationForm.get('emailClient')?.errors?.['required']">
-          Ce champ est requis.
-        </small>
-        <small *ngIf="reservationForm.get('emailClient')?.errors?.['email']">
-          Entrez une adresse email valide.
-        </small>
+        <small *ngIf="reservationForm.get('emailClient')?.errors?.['required']">Ce champ est requis.</small>
+        <small *ngIf="reservationForm.get('emailClient')?.errors?.['email']">Entrez une adresse email valide.</small>
       </div>
     </div>
     <!-- Téléphone -->
     <div class="mb-3">
-      <label for="telClient" class="form-label">Téléphone :</label>
+      <label for="telClient" class="form-label" style="color: #fff;">Téléphone :</label>
       <input id="telClient" type="text" formControlName="telClient" class="form-control" />
       <div *ngIf="reservationForm.get('telClient')?.touched && reservationForm.get('telClient')?.invalid"
         class="text-danger">
-        <small *ngIf="reservationForm.get('telClient')?.errors?.['required']">
-          Ce champ est requis.
-        </small>
+        <small *ngIf="reservationForm.get('telClient')?.errors?.['required']">Ce champ est requis.</small>
       </div>
     </div>
-    <!-- Choix des jeux -->
+    <!-- Choix jeux -->
     <div class="mb-3">
-      <label for="jeuClient" class="form-label">Titre du jeu :</label>
-      <select id="jeuClient" formControlName="jeuClient" class="form-select" required style="background-color: #2b2b2b;"
-        data-dropup-auto="false"> 
+      <label for="jeuClient" class="form-label" style="color: #fff;">Titre du jeu :</label>
+      <select id="jeuClient" formControlName="jeuClient" class="form-select" required
+        style="background-color: #2b2b2b;">
         <option value="">Sélectionnez un jeu</option>
         <option *ngFor="let jeu of jeux" [value]="jeu.titre">{{ jeu.titre }}</option>
       </select>
       <div *ngIf="reservationForm.get('jeuClient')?.touched && reservationForm.get('jeuClient')?.invalid"
         class="text-danger">
-        <small *ngIf="reservationForm.get('jeuClient')?.errors?.['required']">
-          Ce champ est requis.
-        </small>
+        <small *ngIf="reservationForm.get('jeuClient')?.errors?.['required']">Ce champ est requis.</small>
       </div>
     </div>
     <!-- Plateforme -->
     <div class="mb-3">
-      <label for="plateformeClient" class="form-label">Plateforme :</label>
-      <input id="plateformeClient" type="text" formControlName="plateformeClient"
-        style="background-color: #2b2b2b; color: #ffffff;" class="form-control" readonly />
+      <label for="plateformeClient" class="form-label" style="color: #fff;">Plateforme :</label>
+      <input id="plateformeClient" type="text" formControlName="plateformeClient" class="form-control"
+        style="background-color: #2b2b2b; color: #ffffff;" readonly />
       <div *ngIf="reservationForm.get('plateformeClient')?.touched && reservationForm.get('plateformeClient')?.invalid"
         class="text-danger">
         <small *ngIf="reservationForm.get('plateformeClient')?.errors?.['required']">Ce champ est requis.</small>
       </div>
     </div>
-    <!-- Date de réservation -->
+    <!-- Date réservation -->
     <div class="mb-3">
-      <label for="reservationDate" class="form-label">Date de réservation :</label>
+      <label for="reservationDate" class="form-label" style="color: #fff;">Date de réservation :</label>
       <input id="reservationDate" type="date" formControlName="reservationDate" class="form-control" />
       <div *ngIf="reservationForm.get('reservationDate')?.touched && reservationForm.get('reservationDate')?.invalid"
         class="text-danger">
-        <small *ngIf="reservationForm.get('reservationDate')?.errors?.['required']">
-          Ce champ est requis.
-        </small>
+        <small *ngIf="reservationForm.get('reservationDate')?.errors?.['required']">Ce champ est requis.</small>
       </div>
     </div>
     <!-- Statut -->
     <div class="mb-3">
-      <label for="status" class="form-label">Statut :</label>
-      <select id="status" formControlName="status" style="background-color: #2b2b2b;" class="form-select">
+      <label for="status" class="form-label" style="color: #fff;">Statut :</label>
+      <select id="status" formControlName="status" class="form-select" style="background-color: #2b2b2b;">
         <option value="Confirmée">Confirmée</option>
         <option value="En attente">En attente</option>
         <option value="Annulée">Annulée</option>

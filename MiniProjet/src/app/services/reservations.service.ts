@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Reservation } from '../models/reservation.model';
 
+/**
+ * LES SERVICES ONT ÉTÉ REGROUPÉS DANS API.SERVICE.TS
+ */
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReservationsService {
-
   // API Angular
   // private api = 'http://localhost:3000';
   // API Laravel
@@ -27,8 +30,14 @@ export class ReservationsService {
     return this.http.post<Reservation>(`${this.api}/reservations`, reservation);
   }
 
-  updateReservation(id: number, reservation: Reservation): Observable<Reservation> {
-    return this.http.put<Reservation>(`${this.api}/reservations/${id}`, reservation);
+  updateReservation(
+    id: number,
+    reservation: Reservation
+  ): Observable<Reservation> {
+    return this.http.put<Reservation>(
+      `${this.api}/reservations/${id}`,
+      reservation
+    );
   }
 
   deleteReservation(id: number): Observable<void> {
