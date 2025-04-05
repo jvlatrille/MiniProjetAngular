@@ -22,7 +22,7 @@ export class JeuFormComponent implements OnInit {
   ) {
     this.jeuForm = this.fb.group({
       titre: ['', [Validators.required, Validators.minLength(3)]],
-      plateforme: ['', [Validators.required, Validators.email]],
+      plateforme: ['', [Validators.required]],
       genre: ['', Validators.required],
       developpeur: ['', Validators.required],
       dateDeSortie: ['', Validators.required],
